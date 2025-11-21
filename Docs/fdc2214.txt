@@ -1,0 +1,7899 @@
+FDC2x1x Multi-Channel, High Resolution Capacitance-to-Digital Converter for 
+Capacitive Sensing Applications
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+1 Features
+
+• EMI-resistant architecture
+• Maximum output rates (one active channel):
+
+– 13.3kSPS (FDC2112, FDC2114)
+– 4.08kSPS (FDC2212, FDC2214)
+
+• Maximum input capacitance: 250nF (at 10kHz with 
+
+1mH inductor)
+
+• Sensor excitation frequency: 10kHz to 10MHz
+• Number of channels: 2, 4
+• Resolution: up to 28 bits
+• System noise floor: 0.3fF at 100SPS
+• Supply voltage: 2.7V to 3.6V
+• Power consumption: active: 2.1mA
+• Low-power sleep mode: 35µA
+• Shutdown: 200nA
+Interface: I2C
+•
+• Temperature range: –40°C to +125°C
+
+2 Applications
+
+• Proximity sensor
+• Gesture recognition
+• Level sensor for liquids, including conductive ones 
+
+such as detergent, soap, and ink
+
+3 Description
+
+Capacitive  sensing  is  a  low-power,  high-resolution 
+contactless  sensing  technique  that  can  be  applied 
+to  a  variety  of  applications  ranging  from  proximity 
+detection  and  gesture  recognition  to  remote  liquid 
+level  sensing.  The  sensor  in  a  capacitive  sensing 
+system is any metal or conductor, allowing for a highly 
+flexible system design.
+
+The  main  challenge  limiting  sensitivity  in  capacitive 
+sensing  applications  is  noise  susceptibility  of  the 
+sensors.  With 
+resonant  sensing 
+architecture,  performance  can  be  maintained  even  in 
+the presence of fluorescent light.
+
+the  FDC2x1x 
+
+family  of 
+is  a  multi-channel 
+The  FDC2x1x 
+high-speed 
+capacitance-to-digital 
+high-resolution, 
+converters 
+implementing  capacitive  sensing 
+for 
+solutions.  The  devices  employ  an  innovative  narrow-
+band  based  architecture  to  offer  high  rejection  of 
+out  of  band  noise  while  providing  high  resolution  at 
+high  speed.  The  devices  support  a  wide  excitation 
+frequency  range,  offering  flexibility  in  system  design. 
+A  wide  frequency  range  is  especially  useful  for 
+reliable  sensing  of  conductive 
+liquids  such  as 
+detergent, soap, and ink.
+
+The  FDC221x  is  optimized  for  high  resolution,  up 
+to  28  bits,  while  the  FDC211x  offers  a  fast  sample 
+rate  of  up  to  13.3kSPS  for  easy  implementation 
+of  applications  that  use  fast  moving  targets.  The 
+large  maximum  input  capacitance  of  250nF  allows 
+for  the  use  of  remote  sensors,  as  well  as  for 
+tracking  environmental  changes  over  time  such  as 
+temperature and humidity.
+
+The  FDC2x1x  family  targets  proximity  sensing  and 
+liquid level sensing applications for any type of liquids. 
+For  non-conductive  liquid  level  sensing  applications 
+in  the  presence  of  interferences  such  as  human 
+hands,  the  FDC1004  is  recommended  and  features 
+integrated active shield drivers.
+
+PART NUMBER
+
+Package Information
+PACKAGE(1)
+
+PACKAGE SIZE(2)
+
+FDC2112
+FDC2212
+
+FDC2114
+FDC2214
+
+DNT (WSON, 12)
+
+4mm × 4mm
+
+RGH (WQFN, 16)
+
+4mm × 4mm
+
+(1)
+(2)
+
+For all available packages, see Section 11.
+The package size (length × width) is a nominal value and 
+includes pins, where applicable.
+
+An IMPORTANT NOTICE at the end of this data sheet addresses availability, warranty, changes, use in safety-critical applications, 
+intellectual property matters and other important disclaimers. PRODUCTION DATA.
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Simplified Schematic
+
+2
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+IN0AIN0BIN3AIN3BFDC2114 / FDC2214VDDGNDSCLSDAInt. Osc.ADDRINTBSDGNDMCUVDD3.3 V3.3 VGPIOGPIO0.1 (cid:29)F1 (cid:29)FCoreI2CI2Cperipheral  3.3 VLCap Sensor 0CLKIN40 MHzCLCap Sensor 3CResonant circuit driverResonant circuit driverCopyright © 2016, Texas Instruments Incorporatedwww.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table of Contents
+
+1 Features............................................................................1
+2 Applications..................................................................... 1
+3 Description.......................................................................1
+4 Device Comparison......................................................... 4
+5 Pin Configuration and Functions...................................4
+6 Specifications.................................................................. 6
+6.1 Absolute Maximum Ratings........................................ 6
+6.2 ESD Ratings............................................................... 6
+6.3 Recommended Operating Conditions.........................6
+6.4 Thermal Information....................................................6
+6.5 Electrical Characteristics.............................................7
+6.6 Timing Requirements.................................................. 8
+6.7 Switching Characteristics - I2C................................... 9
+6.8 Typical Characteristics................................................ 9
+7 Detailed Description...................................................... 11
+7.1 Overview................................................................... 11
+7.2 Functional Block Diagrams....................................... 11
+7.3 Feature Description...................................................12
+
+7.4 Device Functional Modes..........................................20
+7.5 Programming............................................................ 20
+7.6 Register Maps...........................................................21
+8 Application and Implementation.................................. 39
+8.1 Application Information............................................. 39
+8.2 Typical Application.................................................... 41
+8.3 Best Design Practices...............................................45
+8.4 Power Supply Recommendations.............................45
+8.5 Layout....................................................................... 45
+9 Device and Documentation Support............................50
+9.1 Receiving Notification of Documentation Updates....50
+9.2 Support Resources................................................... 50
+9.3 Trademarks............................................................... 50
+9.4 Electrostatic Discharge Caution................................50
+9.5 Glossary....................................................................50
+10 Revision History.......................................................... 50
+11 Mechanical, Packaging, and Orderable 
+
+Information.................................................................... 50
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+3
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+4 Device Comparison
+
+PART NUMBER
+
+RESOLUTION
+
+CHANNELS
+
+Table 4-1. Device Comparison
+
+FDC2112
+
+FDC2114
+
+FDC2212
+
+FDC2214
+
+12 bit
+
+12 bit
+
+28 bit
+
+28 bit
+
+5 Pin Configuration and Functions
+
+2
+
+4
+
+2
+
+4
+
+www.ti.com
+
+PACKAGE
+
+WSON-12
+
+WQFN-16
+
+WSON-12
+
+WQFN-16
+
+Figure 5-1. FDC2112/FDC2212 WSON DNT-12 Top View 
+
+Figure 5-2. FDC2114/FDC2214 WQFN RGH-16 Top View 
+
+PIN
+
+NAME
+
+NO.
+
+TYPE(1)
+
+Table 5-1. Pin Functions
+
+DESCRIPTION
+
+SCL
+
+SDA
+
+CLKIN
+
+ADDR
+
+INTB
+
+SD
+
+VDD
+
+GND
+
+IN0A
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+I
+
+I/O
+
+I
+
+I
+
+O
+
+I
+
+P
+
+G
+
+A
+
+I2C Clock input
+
+I2C Data input/output
+
+Controller Clock input. Tie this pin to GND if internal oscillator is selected
+
+I2C Address selection pin: when ADDR=L, I2C address = 0x2A, when ADDR=H, I2C address = 
+0x2B.
+
+Configurable Interrupt output pin
+
+Shutdown input
+
+Power Supply
+
+Ground
+
+Capacitive sensor input 0
+
+4
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+DAP1SCL3CLKIN4ADDRINTB5VDD7GND8IN0A9IN0B10IN1A11SD6IN1B122SDA12341211109567816151413DAPSCLSDACLKINADDRIN0AIN0BIN1AIN1BINTBSDVDDGNDIN3BIN2BIN3AIN2Awww.ti.com
+
+PIN
+
+NAME
+
+NO.
+
+TYPE(1)
+
+IN0B
+
+IN1A
+
+IN1B
+
+IN2A
+
+IN2B
+
+IN3A
+
+IN3B
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+A
+
+A
+
+A
+
+A
+
+A
+
+A
+
+A
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 5-1. Pin Functions (continued)
+
+DESCRIPTION
+
+Capacitive sensor input 0
+
+Capacitive sensor input 1
+
+Capacitive sensor input 1
+
+Capacitive sensor input 2 (FDC2114 / FDC2214 only)
+
+Capacitive sensor input 2 (FDC2114 / FDC2214 only)
+
+Capacitive sensor input 3 (FDC2114 / FDC2214 only)
+
+Capacitive sensor input 3 (FDC2114 / FDC2214 only)
+
+DAP(2)
+
+DAP
+
+N/A
+
+Connect to Ground
+
+(1)
+(2)
+
+I = Input, O = Output, P=Power, G=Ground, A=Analog
+There is an internal electrical connection between the exposed Die Attach Pad (DAP) and the GND pin of the device. Although the 
+DAP can be left floating, connect the DAP to the same potential as the GND pin of the device for best performance. Do not use the 
+DAP as the primary ground for the device. The device GND pin must always be connected to ground.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+5
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+6 Specifications
+6.1 Absolute Maximum Ratings
+
+See (1)
+
+VDD
+
+Supply voltage range
+
+Vi
+
+IA
+
+ID
+
+TJ
+
+Tstg
+
+Voltage on any pin
+
+Input current on any INx pin
+
+Input current on any digital pin
+
+Junction temperature
+
+Storage temperature
+
+www.ti.com
+
+MIN
+
+–0.3
+
+–8
+
+–5
+
+–55
+
+–65
+
+MAX
+
+5
+
+VDD + 0.3
+
+8
+
+5
+
+150
+
+150
+
+UNIT
+
+V
+
+V
+
+mA
+
+mA
+
+°C
+
+°C
+
+(1)
+
+Stresses beyond those listed under Absolute Maximum Ratings may cause permanent damage to the device. These are stress 
+ratings only, which do not imply functional operation of the device at these or any other conditions beyond those indicated under 
+Recommended Operating Conditions. Exposure to absolute-maximum-rated conditions for extended periods may affect device 
+reliability.
+6.2 ESD Ratings
+
+FDC2112 / FDC2212 in 12-pin WSON package
+
+V(ESD)
+
+Electrostatic discharge
+
+Human-body model (HBM), per ANSI/ESDA/JEDEC JS-001(1)
+
+Charged-device model (CDM), per JEDEC specification JESD22-C101(2)
+
+FDC2114 / FDC2214 in 16-pin WQFN package
+
+V(ESD)
+
+Electrostatic discharge
+
+Human-body model (HBM), per ANSI/ESDA/JEDEC JS-001(1)
+
+Charged-device model (CDM), per JEDEC specification JESD22-C101(2)
+
+VALUE
+
+UNIT
+
+±2000
+
+±750
+
+±2000
+
+±750
+
+V
+
+V
+
+JEDEC document JEP155 states that 500V HBM allows safe manufacturing with a standard ESD control process.
+JEDEC document JEP157 states that 250V CDM allows safe manufacturing with a standard ESD control process.
+
+(1)
+(2)
+6.3 Recommended Operating Conditions
+
+Unless otherwise specified, all limits ensured for TA = 25°C, VDD = 3.3V
+
+VDD
+
+TA
+
+Supply voltage
+
+Operating temperature
+
+6.4 Thermal Information
+
+THERMAL METRIC(1)
+
+MIN
+
+2.7
+
+–40
+
+NOM
+
+MAX
+
+UNIT
+
+3.6
+
+125
+
+V
+
+°C
+
+FDC2112 / 
+FDC2212
+
+FDC2214 / 
+FDC2214
+
+DNT (WSON)
+
+RGH (WQFN)
+
+12 PINS
+
+16 PINS
+
+UNIT
+
+RθJA
+
+(1)
+
+Junction-to-ambient thermal resistance
+
+50
+
+38
+
+°C/W
+
+For more information about traditional and new thermal metrics, see the Semiconductor and IC Package Thermal Metrics application 
+note.
+
+6
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+6.5 Electrical Characteristics
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Unless otherwise specified, all limits ensured for TA = 25°C, VDD = 3.3V(1)
+
+PARAMETER
+
+TEST CONDITIONS(2)
+
+MIN(3)
+
+TYP(4)
+
+MAX(3)
+
+UNIT
+
+POWER
+
+VDD
+
+IDD
+
+IDDSL
+
+ISD
+
+Supply voltage
+
+Supply current (not including 
+sensor current)(5)
+
+Sleep mode supply current(5)
+
+Shutdown mode supply current(5)
+
+TA = –40°C to +125°C
+CLKIN = 10MHz(6)
+
+CAPACITIVE SENSOR
+
+CSENSORMAX
+
+Maximum sensor capacitance
+
+1mH inductor, 10kHz oscillation
+
+CIN
+
+NBITS
+
+Sensor pin parasitic capacitance
+
+Number of bits
+
+fCS
+
+Maximum channel sample rate
+
+FDC2112, FDC2114
+RCOUNT ≥ 0x0400
+
+FDC2212, FDC2214
+RCOUNT = 0xFFFF
+
+FDC2112, FDC2114
+single active channel continuous 
+conversion, SCL = 400kHz
+
+FDC2212, FDC2214
+single active channel continuous 
+conversion, SCL= 400kHz
+
+2.7
+
+3.6
+
+V
+
+2.1
+
+35
+
+0.2
+
+250
+
+4
+
+mA
+
+µA
+
+µA
+
+nF
+
+pF
+
+bits
+
+bits
+
+60
+
+1
+
+12
+
+28
+
+13.3
+
+kSPS
+
+4.08
+
+kSPS
+
+Sensor excitation frequency
+
+TA = –40°C to +125°C
+
+0.01
+
+10
+
+MHz
+
+EXCITATION
+
+fSENSOR
+
+VSENSORMIN
+
+VSENSORMAX
+
+Minimum sensor oscillation 
+amplitude (pk)(7)
+
+Maximum sensor oscillation 
+amplitude (pk)
+
+ISENSORMAX
+
+Sensor maximum current drive
+
+HIGH_CURRENT_DRV = b0
+DRIVE_CURRENT_CH0 = 0xF800
+
+HIGH_CURRENT_DRV = b1
+DRIVE_CURRENT_CH0 = 0xF800
+Channel 0 only
+
+1.2
+
+1.8
+
+1.5
+
+6
+
+V
+
+V
+
+mA
+
+mA
+
+CONTROLLER CLOCK
+
+fCLKIN
+
+External controller clock input 
+frequency (CLKIN)
+
+TA = –40°C to +125°C
+
+2
+
+40
+
+MHz
+
+CLKINDUTY_MIN
+
+External controller clock minimum 
+acceptable duty cycle (CLKIN)
+
+CLKINDUTY_MAX
+
+External controller clock maximum 
+acceptable duty cycle (CLKIN)
+
+VCLKIN_LO
+
+VCLKIN_HI
+
+fINTCLK
+
+TCf_int_μ
+
+CLKIN low voltage threshold
+
+CLKIN high voltage threshold
+
+Internal controller clock frequency 
+range
+
+Internal controller clock 
+temperature coefficient mean
+
+40%
+
+60%
+
+0.7*VDD
+
+0.3*VDD
+
+V
+
+V
+
+35
+
+43.4
+
+55
+
+MHz
+
+–13
+
+ppm/°C
+
+(1)
+
+Electrical Characteristics values apply only for factory testing conditions at the temperature indicated. Factory testing conditions result 
+in very limited self-heating of the device such that TJ = TA. No guarantee of parametric performance is indicated in the electrical tables 
+under conditions of internal self-heating where TJ > TA. Absolute Maximum Ratings indicate junction temperature limits beyond which 
+the device can be permanently degraded, either mechanically or electrically.
+
+(2) Register values are represented as either binary (b is the prefix to the digits), or hexadecimal (0x is the prefix to the digits). Decimal 
+
+(3)
+
+values have no prefix.
+Limits are ensured by testing, design, or statistical analysis at 25°C. Limits over the operating temperature range are ensured through 
+correlations using statistical quality control (SQC) method.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+7
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+(4)
+
+(5)
+(6)
+
+Typical values represent the most likely parametric norm as determined at the time of characterization. Actual typical values can vary 
+over time and also depend on the application and configuration. The typical values are not tested and are not ensured on shipped 
+production material.
+I2C read/write communication and pullup resistors current through SCL, SDA not included.
+Sensor capacitor: 1 layer, 20.9 x 13.9mm, Bourns CMH322522-180KL sensor inductor with L=18µH and 33pF 1% COG/NP0 
+Target: Grounded aluminum plate (176 x 123mm), Channel = Channel 0 (continuous mode) CLKIN = 40MHz, CHx_FIN_SEL = 
+b10, CHx_FREF_DIVIDER = b00 0000 0001 CH0_RCOUNT = 0xFFFF, SETTLECOUNT_CH0 = 0x0100, DRIVE_CURRENT_CH0 = 
+0x7800.
+Lower VSENSORMIN oscillation amplitudes can be used, but will result in lower SNR.
+
+(7)
+6.6 Timing Requirements
+
+tSDWAKEUP
+
+Wake-up time from SD high-low transition to I2C readback
+
+tSLEEPWAKEUP Wake-up time from sleep mode
+
+tWD-TIMEOUT
+I2C TIMING CHARACTERISTICS
+
+Sensor recovery time (after watchdog timeout)
+
+fSCL
+
+tLOW
+
+tHIGH
+
+tHD;STA
+
+tSU;STA
+
+tHD;DAT
+
+tSU;DAT
+
+tSU;STO
+
+tBUF
+
+tVD;DAT
+
+tVD;ACK
+
+tSP
+
+Clock frequency
+
+Clock low time
+
+Clock high time
+
+Hold time (repeated) START condition: after this period, the first clock 
+pulse is generated
+
+Setup time for a repeated START condition
+
+Data hold time
+
+Data setup time
+
+Setup time for STOP condition
+
+Bus free time between a STOP and START condition
+
+Data valid time
+
+Data valid acknowledge time
+
+Pulse width of spikes that must be suppressed by the input filter(1)
+
+MIN
+
+NOM
+
+MAX
+
+UNIT
+
+10
+
+1.3
+
+0.6
+
+0.6
+
+0.6
+
+0
+
+100
+
+0.6
+
+1.3
+
+5.2
+
+2
+
+0.05
+
+ms
+
+ms
+
+ms
+
+400
+
+kHz
+
+μs
+
+μs
+
+μs
+
+μs
+
+μs
+
+ns
+
+μs
+
+μs
+
+μs
+
+μs
+
+ns
+
+0.9
+
+0.9
+
+50
+
+Figure 6-1. I2C Timing
+
+8
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+SCLSDAtHD;STAtLOWtrtHD;DATtHIGHtftSU;DATtSU;STAtSU;STOtfSTARTREPEATEDSTARTSTOPtHD;STASTARTtSPtrtBUFwww.ti.com
+
+6.7 Switching Characteristics - I2C
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Unless otherwise specified, all limits ensured for TA = 25°C, VDD = 3.3V
+
+PARAMETER
+
+TEST CONDITIONS
+
+MIN
+
+TYP
+
+MAX
+
+UNIT
+
+VOLTAGE LEVELS
+
+VIH
+
+VIL
+
+VOL
+
+HYS
+
+Input high voltage
+
+Input low voltage
+
+Output low voltage (3mA sink 
+current)
+
+Hysteresis
+
+0.7ˣVDD
+
+0.3ˣVDD
+
+0.4
+
+V
+
+V
+
+V
+
+V
+
+0.1ˣVDD
+
+This parameter is specified by design and/or characterization and is not tested in production.
+
+(1)
+6.8 Typical Characteristics
+
+Common test conditions (unless specified otherwise): Sensor capacitor: 1 layer, 20.9mm × 13.9mm, Bourns 
+CMH322522-180KL sensor inductor with L=18µH and 33pF 1% COG/NP0 Target: Grounded aluminum plate (176mm × 
+123mm), Channel = Channel 0 (continuous mode) CLKIN = 40MHz, CHx_FIN_SEL = b01, CHx_FREF_DIVIDER = b00 0000 
+0001 CH0_RCOUNT = 0xFFFF, SETTLECOUNT_CH0 = 0x0100, DRIVE_CURRENT_CH0 = 0x7800.
+
+Includes 1.57mA sensor current
+
+–40°C to +125°C
+
+Figure 6-2. Active Mode IDD vs Temperature
+
+Includes 1.57mA sensor current
+
+Figure 6-3. Active Mode IDD vs VDD
+
+–40°C to +125°C
+
+Figure 6-5. Sleep Mode IDD vs VDD
+
+Figure 6-4. Sleep Mode IDD vs Temperature
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+9
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+Temperature (°C)IDD CH0 Current (mA)-40-200204060801001203.053.0753.13.1253.153.1753.23.2253.25D003VDD = 2.7 VVDD = 3 VVDD = 3.3 VVDD = 3.6 VVDD (V)IDD CH0 Current (mA)2.72.82.933.13.23.33.43.53.63.053.13.153.23.25D004-40°C-20°C0°C25°C50°C85°C100°C125°CTemperature (°C)Sleep Current (µA)-40-200204060801001202530354045505560D005VDD = 2.7 VVDD = 3 VVDD = 3.3 VVDD = 3.6 VVDD (V)Sleep Current (µA)2.72.82.933.13.23.33.43.53.6253035404550556065D006-40°C-20°C0°C25°C50°C85°C100°C125°CFDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+6.8 Typical Characteristics (continued)
+
+www.ti.com
+
+Common test conditions (unless specified otherwise): Sensor capacitor: 1 layer, 20.9mm × 13.9mm, Bourns 
+CMH322522-180KL sensor inductor with L=18µH and 33pF 1% COG/NP0 Target: Grounded aluminum plate (176mm × 
+123mm), Channel = Channel 0 (continuous mode) CLKIN = 40MHz, CHx_FIN_SEL = b01, CHx_FREF_DIVIDER = b00 0000 
+0001 CH0_RCOUNT = 0xFFFF, SETTLECOUNT_CH0 = 0x0100, DRIVE_CURRENT_CH0 = 0x7800.
+
+–40°C to +125°C
+
+Figure 6-7. Shutdown Mode IDD vs VDD
+
+Figure 6-6. Shutdown Mode IDD vs Temperature
+
+–40°C to +125°C
+
+Data based on 1 unit
+
+Figure 6-8. Internal Oscillator Frequency vs Temperature
+
+Figure 6-9. Internal Oscillator Frequency vs VDD
+
+10
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+Temperature (°C)Shutdown Current (µA)-40-2002040608010012000.20.40.60.811.21.4D007VDD = 2.7 VVDD = 3 VVDD = 3.3 VVDD = 3.6 VVDD (V)Shutdown Current (µA)2.72.82.933.13.23.33.43.53.600.20.40.60.811.21.41.6D008-40°C-20°C0°C25°C50°C85°C100°C125°CTemperature (°C)Internal Oscillator (MHz)-40-2002040608010012043.3243.3343.3443.3543.3643.3743.3843.3943.4D009VDD = 2.7 VVDD = 3 VVDD = 3.3 VVDD = 3.6 VVDD (V)Internal Oscillator (MHz)2.72.82.933.13.23.33.43.53.643.3243.3343.3443.3543.3643.3743.3843.3943.443.41D010-40°C-20°C0°C25°C50°C85°C100°C125°Cwww.ti.com
+
+7 Detailed Description
+7.1 Overview
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+The  FDC2112,  FDC2114,  FDC2212,  and  FDC2214  are  high-resolution,  multichannel  capacitance-to-digital 
+converters  for  implementing  capacitive  sensing  solutions.  In  contrast  to  traditional  switched-capacitance 
+architectures, the FDC2112, FDC2114, FDC2212, and FDC2214 employ an L-C resonator, also known as L-C 
+tank, as a sensor. The narrow-band architecture allows unprecedented EMI immunity and greatly reduced noise 
+floor when compared to other capacitive sensing solutions.
+
+Using  this  approach,  a  change  in  capacitance  of  the  L-C  tank  can  be  observed  as  a  shift  in  the  resonant 
+frequency. Using this principle, the FDC is a capacitance-to-digital converter (FDC) that measures the oscillation 
+frequency of an LC resonator. The device outputs a digital value that is proportional to frequency. This frequency 
+measurement can be converted to an equivalent capacitance
+
+7.2 Functional Block Diagrams
+
+Figure 7-1. Block Diagram for the FDC2112 and FDC2212
+
+Figure 7-2. Block Diagrams for the FDC2114 and FDC2214
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+11
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+IN0AIN0BIN1AIN1BFDC2112 / FDC2212VDDGNDSCLSDAInt. Osc.ADDRINTBSDGNDMCUVDD3.3 V3.3 VGPIOGPIO0.1 (cid:29)F1 (cid:29)FCoreResonant circuit driverResonant circuit driverI2CI2Cperipheral  3.3 VLCap Sensor 0CLKIN40 MHzCLCap Sensor 1CCopyright © 2016, Texas Instruments IncorporatedIN0AIN0BIN3AIN3BFDC2114 / FDC2214VDDGNDSCLSDAInt. Osc.ADDRINTBSDGNDMCUVDD3.3 V3.3 VGPIOGPIO0.1 (cid:29)F1 (cid:29)FCoreI2CI2Cperipheral  3.3 VLCap Sensor 0CLKIN40 MHzCLCap Sensor 3CResonant circuit driverResonant circuit driverCopyright © 2016, Texas Instruments IncorporatedFDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+The FDC is composed of front-end resonant circuit drivers, followed by a multiplexer that sequences through the 
+active channels, connecting them to the core that measures and digitizes the sensor frequency (fSENSOR). The 
+core uses a reference frequency (fREF) to measure the sensor frequency. fREF is derived from either an internal 
+reference clock (oscillator), or an externally supplied clock. The digitized output for each channel is proportional 
+to the ratio of fSENSOR/fREF. The I2C interface is used to support device configuration and to transmit the digitized 
+frequency values to a host processor. The FDC can be placed in shutdown mode, saving current, using the SD 
+pin. The INTB pin can be configured to notify the host of changes in system status.
+
+7.3 Feature Description
+7.3.1 Clocking Architecture
+
+Figure 7-3 shows the clock dividers and multiplexers of the FDC.
+
+A.
+
+FDC2114 / FDC2214 only
+
+Figure 7-3. Clocking Diagram
+
+In  Figure  7-3,  the  key  clocks  are  fIN,  fREF,  and  fCLK.  fCLK  is  selected  from  either  the  internal  clock  source  or 
+external  clock  source  (CLKIN)  .  The  frequency  measurement  reference  clock,  fREF,  is  derived  from  the  fCLK 
+source.  TI  recommends  that  precision  applications  use  an  external  controller  clock  that  offers  the  stability  and 
+accuracy requirements needed for the application. The internal oscillator can be used in applications that require 
+low  cost  and  do  not  require  high  precision.  The  fINx  clock  is  derived  from  sensor  frequency  for  a  channel  x, 
+fSENSORx.  fREFx  and  fINx  must  meet  the  requirements  listed  in  Table  7-1,  depending  on  whether  fCLK  (controller 
+clock) is the internal or external clock.
+
+12
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+fSENSOR3(1)÷ n÷ nCH3_FREF_DIVIDER (0x17)(1)CH2_FREF_DIVIDER (0x16)(1)Int. Osc.CoretfREFtData OutputtfINTtREF_CLK_SRC (0x1A)CONFIG (0x1A)MUX_CONFIG (0x1B)÷ n÷ nCH1_FREF_DIVIDER (0x15)CH0_FREF_DIVIDER (0x14)tfREF0ttfREF1ttfREF2(1)ttfREF3(1)t÷ m÷ mCH3_FIN_SEL (0x17)(1)CH2_FIN_SEL (0x16)(1)tfINt÷ m÷ mCH1_FIN_SEL (0x15)CH0_FIN_SEL (0x14)tfIN0ttfIN1ttfIN2(1)ttfIN3(1)ttfCLKtCONFIG (0x1A)MUX_CONFIG (0x1B)IN2A(1)IN2B(1)IN3A(1)IN3B(1)IN1AIN1BIN0AIN0BfCLKINCLKINLCap Sensor 3(1)fSENSOR2(1)LCap Sensor 2(1)fSENSOR1LCap Sensor 1fSENSOR0LCap Sensor 0Copyright © 2016, Texas Instruments Incorporatedwww.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 7-1. Clock Configuration Requirements
+
+MODE(1)
+
+CLKIN SOURCE
+
+VALID fREFx 
+RANGE (MHz)
+
+VALID fINx 
+RANGE
+
+SET CHx_FIN_SEL 
+to (2)
+
+SET 
+CHx_SETTLECO
+UNT to
+
+SET 
+CHx_RCOUNT to
+
+Multi-channel
+
+Internal
+
+Single-channel
+
+External
+
+Either external or 
+internal
+
+fREFx ≤ 55
+
+fREFx ≤ 40
+
+fREFx ≤ 35
+
+< fREFx /4
+
+Differential sensor 
+configuration:
+b01: 0.01MHz to 
+8.75MHz (divide by 1)
+b10: 5MHz to 10MHz 
+(divide by 2)
+Single-ended sensor 
+configuration
+b10: 0.01MHz to 
+10MHz (divide by 2)
+
+> 3
+
+> 8
+
+(1) Channels 2 and 3 are only available for FDC2114 and FDC2214.
+(2) Refer to Sensor Configuration for information on differential and single-ended sensor configurations.
+
+Table 7-2 shows the clock configuration registers for all channels.
+
+CHANNEL(1)
+
+CLOCK
+
+Table 7-2. Clock Configuration Registers
+REGISTER
+
+FIELD [ BIT(S) ]
+
+VALUE
+
+All
+
+0
+
+1
+
+2
+
+3
+
+0
+
+1
+
+2
+
+3
+
+fCLK = Controller 
+Clock Source
+
+CONFIG, addr 
+0x1A
+
+REF_CLK_SRC [9]
+
+b0 = internal oscillator is used as the 
+controller clock
+b1 = external clock source is used as the 
+controller clock
+
+fREF0
+
+fREF1
+
+fREF2
+
+fREF3
+
+fIN0
+
+fIN1
+
+fIN2
+
+fIN3
+
+CLOCK_DIVIDERS
+_CH0, addr 0x14
+
+CLOCK_DIVIDERS
+_CH1, addr 0x15
+
+CLOCK_DIVIDERS
+_CH2, addr 0x16
+
+CLOCK_DIVIDERS
+_CH3, addr 0x17
+
+CLOCK_DIVIDERS
+_CH0, addr 0x14
+
+CLOCK_DIVIDERS
+_CH1, addr 0x15
+
+CLOCK_DIVIDERS
+_CH2, addr 0x16
+
+CLOCK_DIVIDERS
+_CH3, addr 0x17
+
+CH0_FREF_DIVIDER [9:0]
+
+fREF0 = fCLK / CH0_FREF_DIVIDER
+
+CH1_FREF_DIVIDER [9:0]
+
+fREF1 = fCLK / CH1_FREF_DIVIDER
+
+CH2_FREF_DIVIDER [9:0]
+
+fREF2 = fCLK / CH2_FREF_DIVIDER
+
+CH3_FREF_DIVIDER [9:0]
+
+fREF3 = fCLK / CH3_FREF_DIVIDER
+
+CH0_FIN_SEL [13:12]
+
+fIN0 = fSENSOR0 / CH0_FIN_SEL
+
+CH1_FIN_SEL [13:12]
+
+fIN1 = fSENSOR1 / CH1_FIN_SEL
+
+CH2_FIN_SEL [13:12]
+
+fIN2 = fSENSOR2 / CH2_FIN_SEL
+
+CH3_FIN_SEL [13:12]
+
+fIN3 = fSENSOR3 / CH3_FIN_SEL
+
+(1) Channels 2 and 3 are only available for FDC2114 and FDC2214
+7.3.2 Multi-Channel and Single-Channel Operation
+
+The  multi-channel  package  of  the  FDC  enables  the  user  to  save  board  space  and  support  flexible  system 
+design.  For  example,  temperature  drift  can  often  cause  a  shift  in  component  values,  resulting  in  a  shift  in 
+resonant frequency of the sensor. Using a second sensor as a reference provides the capability to cancel out a 
+temperature shift. When operated in multi-channel mode, the FDC sequentially samples the active channels. In 
+single-channel mode, the FDC samples a single channel, which is selectable. Table 7-3 shows the registers and 
+values that are used to configure either multi-channel or single-channel modes.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+13
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Table 7-3. Single- and Multi-Channel Configuration Registers
+
+MODE
+
+REGISTER
+
+FIELD [ BIT(S) ]
+
+VALUE
+
+Single channel
+
+Multi-channel
+
+CONFIG, addr 0x1A
+
+ACTIVE_CHAN [15:14]
+
+MUX_CONFIG addr 0x1B
+
+AUTOSCAN_EN [15]
+
+MUX_CONFIG addr 0x1B
+
+AUTOSCAN_EN [15]
+
+00 = chan 0
+
+01 = chan 1
+
+10 = chan 2
+
+11 = chan 3
+
+0 = continuous conversion on a 
+single channel (default)
+
+1 = continuous conversion on 
+multiple channels
+
+00 = Ch0, Ch 1
+
+MUX_CONFIG addr 0x1B
+
+RR_SEQUENCE [14:13]
+
+01 = Ch0, Ch 1, Ch 2
+
+10 = Ch0, CH1, Ch2, Ch3
+
+The digitized sensor measurement for each channel (DATAx) represents the ratio of the sensor frequency to the 
+reference frequency.
+
+The data output (DATAx) of the FDC2112 and FDC2114 is expressed as the 12 MSBs of a 16-bit result:
+
+The data output (DATAx) of the FDC2212 and FDC2214 is expressed as:
+
+Table 7-4 illustrates the registers that contain the fixed point sample values for each channel.
+
+(1)
+
+(2)
+
+CHANNEL(2)
+
+REGISTER(1)
+
+DATA_CH0, addr 0x00
+
+Table 7-4. Sample Data Registers
+FIELD NAME [ BITS(S) ] AND 
+VALUE (FDC2112, FDC2114)
+
+FIELD NAME [ BITS(S) ] AND VALUE 
+(FDC2212, FDC2214) (3) (4)
+
+DATA0 [11:0]:
+12 bits of the 16 bit result.
+0x000 = under range
+0xfff = over range
+
+DATA0 [27:16]:
+12 MSBs of the 28 bit result
+
+0
+
+1
+
+2
+
+DATA_LSB_CH0, addr 0x01
+
+Not applicable
+
+DATA_CH1, addr 0x02
+
+DATA1 [11:0]:
+12 bits of the 16 bit result.
+0x000 = under range
+0xfff = over range
+
+DATA_LSB_CH1, addr 0x03
+
+Not applicable
+
+DATA_CH2, addr 0x04
+
+DATA2 [11:0]:
+12 bits of the 16 bit result.
+0x000 = under range
+0xfff = over range
+
+DATA0 [15:0]:
+16 LSBs of the 28 bit conversion result
+
+DATA1 [27:16]:
+12 MSBs of the 28 bit result
+
+DATA1 [15:0]:
+16 LSBs of the 28 bit conversion result
+
+DATA2 [27:16]:
+12 MSBs of the 28 bit result
+
+DATA_LSB_CH2, addr 0x05
+
+Not applicable
+
+DATA2 [15:0]:
+16 LSBs of the 28 bit conversion result
+
+14
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+12SENSORxxRxEFƒ(cid:21)ATƒDA(cid:13) 28SENSORxxRxEFƒ(cid:21)ATƒDA(cid:13) www.ti.com
+
+CHANNEL(2)
+
+3
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+REGISTER(1)
+
+Table 7-4. Sample Data Registers (continued)
+FIELD NAME [ BITS(S) ] AND 
+VALUE (FDC2112, FDC2114)
+
+FIELD NAME [ BITS(S) ] AND VALUE 
+(FDC2212, FDC2214) (3) (4)
+
+DATA_CH3, addr 0x06
+
+DATA3 [11:0]:
+12 bits of the 16 bit result.
+0x000 = under range
+0xfff = over range
+
+DATA3 [27:16]:
+12 MSBs of the 28 bit result
+
+DATA_LSB_CH3, addr 0x07
+
+Not applicable
+
+DATA3 [15:0]:
+16 LSBs of the 28 bit conversion result
+
+(1)
+
+The DATA_CHx.DATAx register must always be read first, followed by the DATA_LSB_ CHx.DATAx register of the same channel to 
+ensure data coherency.
+
+(2) Channels 2 and 3 are only available for FDC2114 and FDC2214.
+(3)
+(4)
+
+A DATA value of 0x0000000 = under range for FDC2212/FDC2214.
+A DATA value of 0xFFFFFFF = over range for FDC2212/FDC2214.
+
+When the FDC sequences through the channels in multi-channel mode, the dwell time interval for each channel 
+is the sum of three parts:
+1. sensor activation time
+2. conversion time
+3. channel switch delay
+
+The sensor activation time is the amount of settling time required for the sensor oscillation to stabilize, as shown 
+in Figure 7-4. The settling wait time is programmable, and TI recommends setting the wait time to a value that is 
+long enough to allow stable oscillation. The settling wait time for channel x is given by:
+
+tSx = (CHX_SETTLECOUNTˣ16)/fREFx
+
+(3)
+
+Table 7-5 illustrates the registers and values for configuring the settling time for each channel.
+
+Figure 7-4. Multi-Channel Mode Sequencing
+
+Figure 7-5. Single-Channel Mode Sequencing
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+15
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+Channel 0Channel 1Channel 0 Sensor ActivationChannel 0 ConversionChannel 1 Sensor ActivationChannel 1 ConversionChannel 0 Sensor ActivationChannel switch delayChannel switch delayActive ChannelSensor SignalSensor ActivationConversionAmplitude CorrectionConversionAmplitude CorrectionConversionAmplitude CorrectionFDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+CHANNEL(1)
+
+REGISTER
+
+FIELD
+
+CONVERSION TIME(2)
+
+Table 7-5. Settling Time Register Configuration
+
+0
+
+1
+
+2
+
+3
+
+SETTLECOUNT_CH0, addr 0x10
+
+CH0_SETTLECOUNT [15:0]
+
+(CH0_SETTLECOUNT*16)/fREF0
+
+SETTLECOUNT_CH1, addr 0x11
+
+CH1_SETTLECOUNT [15:0]
+
+(CH1_SETTLECOUNT*16)/fREF1
+
+SETTLECOUNT_CH2, addr 0x12
+
+CH2_SETTLECOUNT [15:0]
+
+(CH2_SETTLECOUNT*16)/fREF2
+
+SETTLECOUNT_CH3, addr 0x13
+
+CH3_SETTLECOUNT [15:0]
+
+(CH3_SETTLECOUNT*16)/fREF3
+
+(1) Channels 2 and 3 are available only in the FDC2114 and FDC2214.
+fREFx is the reference frequency configured for the channel.
+(2)
+
+The SETTLECOUNT for any channel x must satisfy:
+
+•
+
+CHx_SETTLECOUNT > Vpk × fREFx × C × π2 / (32 × IDRIVEX)
+
+• – where
+
+– Vpk = Peak oscillation amplitude at the programmed IDRIVE setting
+– fREFx = Reference frequency for Channel x
+– C = sensor capacitance including parasitic PCB capacitance
+– IDRIVEX = setting programmed into the IDRIVE register in amps
+
+(4)
+
+• Round the result to the next highest integer (for example, if Equation 4 recommends a minimum value of 
+
+6.08, program the register to 7 or higher).
+
+• The conversion time represents the number of reference clock cycles used to measure the sensor frequency 
+
+and is set by the CHx_RCOUNT register for the channel. The conversion time for any channel x is:
+
+•
+
+tCx = (CHx_RCOUNT ˣ 16 + 4) /fREFx
+
+(5)
+
+• The reference count value must be chosen to support the required number of effective bits (ENOB). For 
+
+example, if an ENOB of 13 bits is required, then a minimum conversion time of 213 = 8192 clock cycles is 
+required. 8192 clock cycles correspond to a CHx_RCOUNT value of 0x0200.
+
+Table 7-6. Conversion Time Configuration Registers, Channels 0 - 3 (1) 
+
+CHANNEL
+
+REGISTER
+
+FIELD [ BIT(S) ]
+
+CONVERSION TIME
+
+0
+
+1
+
+2
+
+3
+
+RCOUNT_CH0, addr 0x08
+
+CH0_RCOUNT [15:0]
+
+RCOUNT_CH1, addr 0x09
+
+CH1_RCOUNT [15:0]
+
+RCOUNT_CH2, addr 0x0A
+
+CH2_RCOUNT [15:0]
+
+RCOUNT_CH3, addr 0x0B
+
+CH3_RCOUNT [15:0]
+
+(CH0_RCOUNT*16)/fREF0
+
+(CH1_RCOUNT*16)/fREF1
+
+(CH2_RCOUNT*16)/fREF2
+
+(CH3_RCOUNT*16)/fREF3
+
+(1) Channels 2 and 3 are available only for FDC2114 and FDC2214.
+
+The typical channel switch delay time between the end of conversion and the beginning of sensor activation of 
+the subsequent channel is:
+
+Channel Switch Delay = 692ns + 5 / fref
+
+(6)
+
+The  deterministic  conversion  time  of  the  FDC  allows  data  polling  at  a  fixed  interval.  For  example,  if  the 
+programmed RCOUNT setting is 512 FREF cycles and SETTLECOUNT is 128 FREF cycles, then one conversion 
+takes  1.8ms  (sensor-activation  time)  +  3.2ms  (conversion  time)  +  0.75ms  (channel-switch  delay)  =  16.75ms 
+per  channel.  If  the  FDC  is  configured  for  dual-channel  operation  by  setting  AUTOSCAN_EN  =  1  and 
+RR_SEQUENCE = 00, then one full set of conversion results are available from the data registers every 33.5ms.
+
+A  data  ready  flag  (DRDY)  is  also  available  for  interrupt  driven  system  designs  (see  the  STATUS  register 
+description in Register Maps).
+
+7.3.3 Gain and Offset (FDC2112, FDC2114 Only)
+
+The FDC2112 and FDC2114 have internal 16-bit data converters, but the standard conversion output word width 
+is only 12 bits; therefore only 12 of the 16 bits are available from the data registers. By default, the gain feature is 
+disabled and the DATA registers contain the 12 MSBs of the 16-bit word. However, it is possible to shift the data 
+
+16
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+output by up to 4 bits. Figure 7-6 illustrates the segment of the 16-bit sample that is reported for each possible 
+gain setting.
+
+Figure 7-6. Conversion Data Output Gain
+
+For  systems  in  which  the  sensor  signal  variation  is  less  than  25%  of  the  full-scale  range,  the  FDC  can  report 
+conversion  results  with  higher  resolution  by  setting  the  Output  Gain.  The  Output  Gain  is  applied  to  all  device 
+channels.  An  output  gain  can  be  used  to  apply  a  2-bit,  3-bit,  or  4-bit  shift  to  the  output  code  for  all  channels, 
+allowing access to the 4 LSBs of the original 16-bit result. The MSBs of the sample are shifted out when a gain is 
+applied. Do not use the output gain if the MSBs of any active channel are toggling, as the MSBs for that channel 
+are lost when gain is applied.
+
+Example: If the conversion result for a channel is 0x07A3, with OUTPUT_GAIN=0x0, the reported output code 
+is  0x07A.  If  OUTPUT_GAIN  is  set  to  0x3  in  the  same  condition,  then  the  reported  output  code  is  0x7A3.  The 
+original 4 MSBs (0x0) are no longer accessible.
+
+Table 7-7. Output Gain Register (FDC2112 and FDC2114 Only)
+
+CHANNEL(1)
+
+REGISTER
+
+FIELD [ BIT(S) ]
+
+VALUES
+
+EFFECTIVE 
+RESOLUTION (BITS)
+
+All
+
+RESET_DEV, addr 
+0x1C
+
+OUTPUT_GAIN 
+[ 10:9 ]
+
+00 (default): Gain =1 (0 bits 
+shift)
+
+01: Gain = 4 (2 bits left shift)
+
+10: Gain = 8 (3 bits left shift)
+
+11 : Gain = 16 (4 bits left 
+shift)
+
+12
+
+14
+
+15
+
+16
+
+OUTPUT RANGE
+
+100% full scale
+
+25% full scale
+
+12.5% full scale
+
+6.25% full scale
+
+(1) Channels 2 and 3 are available for FDC2114 only.
+
+An offset value can be subtracted from each DATA value to compensate for a frequency offset or maximize the 
+dynamic  range  of  the  sample  data.  Make  sure  the  offset  values  <  fSENSORx_MIN  /  fREFx.  Otherwise,  the  offset 
+might be so large that the offset masks the LSBs which are changing.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+17
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+15121187430Conversion result110Output_gain = 0x3110Output_gain = 0x2110Output_gain = 0x1110Output_gain = 0x0 (default)MSBLSB110Data available in DATA_MSB_CHx.DATA_CHx [11:0]FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+CHANNEL(1)
+
+REGISTER
+
+FIELD [ BIT(S) ]
+
+VALUE
+
+Table 7-8. Frequency Offset Registers
+
+0
+
+1
+
+2
+
+3
+
+OFFSET_CH0, addr 0x0C
+
+CH0_OFFSET [ 15:0 ]
+
+OFFSET_CH1, addr 0x0D
+
+CH1_OFFSET [ 15:0 ]
+
+OFFSET_CH2, addr 0x0E
+
+CH2_OFFSET [ 15:0 ]
+
+OFFSET_CH3, addr 0x0F
+
+CH3_OFFSET [ 15:0 ]
+
+fOFFSET0 = CH0_OFFSET * (fREF0/216)
+fOFFSET1 = CH1_OFFSET * (fREF1/216)
+fOFFSET2 = CH2_OFFSET * (fREF2/216)
+fOFFSET3 = CH3_OFFSET * (fREF3/216)
+
+(1) Channels 2 and 3 are only available for FDC2114 and FDC2214.
+
+The sensor capacitance CSENSE of a differential sensor configuration can be determined by:
+
+where
+
+• C = parallel sensor capacitance (see Figure 8-2)
+
+The FDC2112 and FDC2114 sensor frequency fSENSORx can be determined by:
+
+where
+
+• DATAx = Conversion result from the DATA_CHx register
+• CHx_OFFSET = Offset value set in the OFFSET_CHx register
+• OUTPUT_GAIN = output multiplication factor set in the RESET_DEVICE.OUTPUT_GAIN register
+
+The FDC2212 and FDC2214 sensor frequency fSENSORx can be determined by:
+
+ (FDC2212, FDC2214)
+
+where
+
+• DATAx = Conversion result from the DATA_CHx register
+
+7.3.4 Current Drive Control Registers
+
+(7)
+
+(8)
+
+(9)
+
+The registers listed in Table 7-9 are used to control the sensor drive current. Follow the recommendations listed 
+in the last column of the table.
+
+CHANNEL(1)
+
+REGISTER
+
+FIELD [ BIT(S) ]
+
+VALUE
+
+Table 7-9. Current Drive Control Registers
+
+CONFIG, addr 0x1A
+
+SENSOR_ACTIVATE_SEL [11]
+
+CONFIG, addr 0x1A
+
+HIGH_CURRENT_DRV [6]
+
+DRIVE_CURRENT_CH0, addr 0x1E CH0_IDRIVE [15:11]
+
+All
+
+0
+
+0
+
+Sets current drive for sensor activation. 
+Recommended value is b0 (Full Current 
+mode).
+
+b0 = normal current drive (1.5mA)
+b1 = Increased current drive (> 1.5mA) for 
+Ch 0 in single channel mode only. Cannot 
+be used in multi-channel mode.
+
+Drive current used during the settling and 
+conversion time for Ch. 0. Set such that 
+1.2V ≤ sensor oscillation amplitude (pk) ≤ 
+1.8V
+
+18
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+2SENSOSSORxNRE1CCL(2ƒ(cid:12) (cid:16)(cid:13)S(cid:13)OFFSET(12OUTPSENSORxREFUT_GAIN1x)6CHxDATAxCHx_FIN_SEL22ƒƒ(cid:14) §•(cid:13)¤‚'(cid:13)„(cid:14)REFxSENSORx28CHx_FIN_Sƒ’$7$L2ƒEx(cid:13)(cid:13) www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+CHANNEL(1)
+
+REGISTER
+
+FIELD [ BIT(S) ]
+
+VALUE
+
+Table 7-9. Current Drive Control Registers (continued)
+
+DRIVE_CURRENT_CH1, addr 0x1F CH1_IDRIVE [15:11]
+
+DRIVE_CURRENT_CH2, addr 0x20 CH2_IDRIVE [15:11]
+
+DRIVE_CURRENT_CH3, addr 0x21 CH3_IDRIVE [15:11]
+
+1
+
+2
+
+3
+
+Drive current used during the settling and 
+conversion time for Ch. 1. Set such that 
+1.2V ≤ sensor oscillation amplitude (pk) ≤ 
+1.8V
+
+Drive current used during the settling and 
+conversion time for Ch. 2. Set such that 
+1.2V ≤ sensor oscillation amplitude (pk) ≤ 
+1.8V
+
+Drive current used during the settling and 
+conversion time for Ch. 3 . Set such that 
+1.2V ≤ sensor oscillation amplitude (pk) ≤ 
+1.8V
+
+(1) Channels 2 and 3 are available for FDC2114 and FDC2214 only.
+
+The CHx_IDRIVE field should be programmed such that the sensor oscillates at an amplitude between 1.2Vpk 
+(VSENSORMIN) and 1.8Vpk (VSENSORMAX). An IDRIVE value of 00000 corresponds to 16µA, and IDRIVE = b11111 
+corresponds to 1563µA.
+
+A high sensor current drive mode can be enabled to drive sensor coils with > 1.5mA on channel 0, only in single 
+channel mode. This feature can be used when the sensor minimum recommended oscillation amplitude of 1.2V 
+cannot be achieved with the highest IDRIVE setting. Set the HIGH_CURRENT_DRV register bit to b1 to enable 
+this mode.
+
+7.3.5 Device Status Registers
+
+The registers listed in Table 7-10 can be used to read device status.
+
+CHANNEL(1)
+
+REGISTER
+
+FIELDS [ BIT(S) ]
+
+VALUES
+
+Table 7-10. Status Registers
+
+All
+
+All
+
+STATUS, addr 0x18
+
+STATUS_CONFIG, addr 0x19
+
+12 fields are available that 
+contain various status bits [ 15:0 ]
+
+Refer to Register Maps section 
+for a description of the individual 
+status bits.
+
+12 fields are available that are 
+used to configure status reporting 
+[ 15:0 ]
+
+Refer to Register Maps section 
+for a description of the individual 
+error configuration bits.
+
+(1) Channels 2 and 3 are available for FDC2114 and FDC2114 only.
+
+See the STATUS and STATUS_CONFIG register description in the Register Map section. These registers can be 
+configured to trigger an interrupt on the INTB pin for certain events. The following conditions must be met:
+
+1. The error or status register must be unmasked by enabling the appropriate register bit in the 
+
+STATUS_CONFIG register
+
+2. The INTB function must be enabled by setting CONFIG.INTB_DIS to 0
+
+When a bit field in the STATUS register is set, the entire STATUS register content is held until read or until the 
+DATA_CHx register is read. Reading also deasserts INTB.
+
+Interrupts are cleared by one of the following events:
+
+1. Entering Sleep Mode
+2. Power-on reset (POR)
+3. Device enters Shutdown Mode (SD is asserted)
+4. S/W reset
+5.
+
+I2C read of the STATUS register: Reading the STATUS register clears any error status bit set in STATUS 
+along with the ERR_CHAN field and deassert INTB
+
+Setting register CONFIG.INTB_DIS to b1 disables the INTB function and holds the INTB pin high.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+19
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+7.3.6 Input Deglitch Filter
+
+www.ti.com
+
+The  input  deglitch  filter  suppresses  EMI  and  ringing  above  the  sensor  frequency.  The  input  deglitch  filter 
+does  not  impact  the  conversion  result  as  long  as  the  bandwidth  is  configured  to  be  above  the  maximum 
+sensor  frequency.  The  input  deglitch  filter  can  be  configured  in  MUX_CONFIG.DEGLITCH  register  field  as 
+shown  in  Table  7-11.  For  optimal  performance,  TI  recommends  to  select  the  lowest  setting  that  exceeds 
+the  sensor  oscillation  frequency.  For  example,  if  the  maximum  sensor  frequency  is  2.0MHz,  choose 
+MUX_CONFIG.DEGLITCH = b100 (3.3MHz).
+
+CHANNEL(1)
+
+MUX_CONFIG.DEGLITCH (addr 0x1B) REGISTER VALUE
+
+DEGLITCH FREQUENCY
+
+Table 7-11. Input Deglitch Filter Register
+
+ALL
+
+ALL
+
+ALL
+
+ALL
+
+001
+
+100
+
+101
+
+011
+
+(1) Channels 2 and 3 are available for FDC2114 / FDC2214 only.
+7.4 Device Functional Modes
+7.4.1 Start-Up Mode
+
+1MHz
+
+3.3MHz
+
+10MHz
+
+33MHz
+
+When  the  FDC  powers  up,  the  FDC  enters  into  Sleep  Mode  and  waits  for  configuration.  When  the  device  is 
+configured, exit Sleep Mode by setting CONFIG.SLEEP_MODE_EN to b0.
+
+TI recommends to configure the FDC while in Sleep Mode. If a setting on the FDC needs to be changed, return 
+the device to Sleep Mode, change the appropriate register, and then exit Sleep Mode.
+
+7.4.2 Normal (Conversion) Mode
+
+When  operating  in  the  normal  (conversion)  mode,  the  FDC  is  periodically  sampling  the  frequency  of  the 
+sensor(s) and generating sample outputs for the active channel(s).
+
+7.4.3 Sleep Mode
+
+Sleep  Mode  is  entered  by  setting  the  CONFIG.SLEEP_MODE_EN  register  field  to  1.  While  in  this  mode,  the 
+register  contents  are  maintained.  To  exit  Sleep  Mode,  set  the  CONFIG.SLEEP_MODE_EN  register  field  to  0. 
+After  setting  CONFIG.SLEEP_MODE_EN  to  b0,  sensor  activation  for  the  first  conversion  begins  after  16,384 
+fINT  clock  cycles.  While  in  Sleep  Mode  the  I2C  interface  is  functional  so  that  register  reads  and  writes  can  be 
+performed.  While  in  Sleep  Mode,  no  conversions  are  performed.  In  addition,  entering  Sleep  Mode  clears  any 
+error condition and deassert the INTB pin.
+
+7.4.4 Shutdown Mode
+
+When the SD pin is set to high, the FDC enters Shutdown Mode. Shutdown Mode is the lowest power state. To 
+exit Shutdown Mode, set the SD pin to low. Entering Shutdown Mode returns all registers to the default states.
+
+While in Shutdown Mode, no conversions are performed. In addition, entering Shutdown Mode clears any error 
+condition and deassert the INTB pin. While the device is in Shutdown Mode, is not possible to read to or write 
+from the device via the I2C interface.
+
+7.4.4.1 Reset
+
+The FDC can be reset by writing to RESET_DEV.RESET_DEV. Conversion stops and all register values return 
+to the default values. This register bit always returns 0b when read.
+
+7.5 Programming
+
+The FDC device uses an I2C interface to access control and data registers.
+
+7.5.1 I2C Interface Specifications
+
+The FDC uses an extended start sequence with I2C for register access. The maximum speed of the I2C interface 
+is 400kbps. This sequence follows the standard I2C 7-bit target address followed by an 8-bit pointer register byte 
+
+20
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+to set the register address. When the ADDR pin is set low, the FDC I2C address is 0x2A; when the ADDR pin 
+is set high, the FDC I2C address is 0x2B. The ADDR pin must not change state after the FDC exits Shutdown 
+Mode.
+
+Figure 7-7. I2C Write Register Sequence
+
+Figure 7-8. I2C Read Register Sequence
+
+7.6 Register Maps
+7.6.1 Register List
+
+Fields indicated with Reserved must be written only with indicated values. Improper device operation can occur 
+otherwise. The R/W column indicates the Read-Write status of the corresponding field. A ‘R/W’ entry indicates 
+read and write capability, a ‘R’ indicates read-only, and a ‘W’ indicates write-only.
+
+ADDRESS
+
+NAME
+
+DEFAULT VALUE
+
+DESCRIPTION
+
+Figure 7-9. Register List
+
+0x00
+
+DATA_CH0
+
+0x01
+
+DATA_LSB_CH0
+
+0x02
+
+DATA_CH1
+
+0x03
+
+DATA_LSB_CH1
+
+0x04
+
+DATA_CH2
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+Channel 0 Conversion Result and status (FDC2112 / FDC2114 only)
+
+Channel 0 MSB Conversion Result and status (FDC2212 / FDC2214 only)
+
+Channel 0 LSB Conversion Result. Must be read after Register address 0x00 
+(FDC2212 / FDC2214 only)
+
+Channel 1 Conversion Result and status (FDC2112 / FDC2114 only)
+
+Channel 1 MSB Conversion Result and status (FDC2212 / FDC2214 only)
+
+Channel 1 LSB Conversion Result. Must be read after Register address 0x02 
+(FDC2212 / FDC2214 only)
+
+Channel 2 Conversion Result and status (FDC2114 only)
+
+Channel 2 MSB Conversion Result and status (FDC2214 only)
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+21
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+19Ack byTargetStart byControllerSCLSDAFrame 1SerialBusAddressBytefrom ControllerR/WA2A0A1A3A4A5A6D7D6D5D4D3D2D1D019Ack byTargetStop byController19D15D14D13D12D11D10D9D8Ack byTargetFrame 3DataMSB from ControllerFrame 4Data LSB from Controller19R7R6R5R4R3R2R1R0Ack byTargetFrame 2Target Register AddressSCLSDA19Ack byTargetStart byControllerSCLSDAFrame 1SerialBusAddressBytefrom ControllerR/WA2A0A1A3A4A5A6D7D6D5D4D3D2D1D019Nack byControllerStop by Controller19D15D14D13D12D11D10D9D8Ack byControllerFrame 4Data MSB from TargetFrame 5Data LSB from Target19R7R6R5R4R3R2R1R0Ack byTargetFrame 2Target Register Address19Start byControllerSCLSDAFrame 3Serial Bus Address Byte from ControllerR/WA2A0A1A3A4A5A6Ack byTargetFDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+ADDRESS
+
+NAME
+
+DEFAULT VALUE
+
+DESCRIPTION
+
+Figure 7-9. Register List (continued)
+
+0x05
+
+DATA_LSB_CH2
+
+0x06
+
+DATA_CH3
+
+0x07
+
+DATA_LSB_CH3
+
+0x08
+
+0x09
+
+0x0A
+
+0x0B
+
+0x0C
+
+0x0D
+
+0x0E
+
+0x0F
+
+0x10
+
+0x11
+
+0x12
+
+0x13
+
+0x14
+
+0x15
+
+0x16
+
+0x17
+
+0x18
+
+0x19
+
+0x1A
+
+0x1B
+
+0x1C
+
+0x1E
+
+0x1F
+
+0x20
+
+0x21
+
+0x7E
+
+0x7F
+
+RCOUNT_CH0
+
+RCOUNT_CH1
+
+RCOUNT_CH2
+
+RCOUNT_CH3
+
+OFFSET_CH0
+
+OFFSET_CH1
+
+OFFSET_CH2
+
+OFFSET_CH3
+
+SETTLECOUNT_CH0
+
+SETTLECOUNT_CH1
+
+SETTLECOUNT_CH2
+
+SETTLECOUNT_CH3
+
+CLOCK_DIVIDERS_CH0
+
+CLOCK_DIVIDERS_CH1
+
+CLOCK_DIVIDERS_CH2
+
+CLOCK_DIVIDERS_CH3
+
+STATUS
+
+STATUS_CONFIG
+
+CONFIG
+
+MUX_CONFIG
+
+RESET_DEV
+
+DRIVE_CURRENT_CH0
+
+DRIVE_CURRENT_CH1
+
+DRIVE_CURRENT_CH2
+
+DRIVE_CURRENT_CH3
+
+MANUFACTURER_ID
+
+DEVICE_ID
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0080
+
+0x0080
+
+0x0080
+
+0x0080
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x2801
+
+Channel 2 LSB Conversion Result. Must be read after Register address 0x04 
+(FDC2214 only)
+
+Channel 3 Conversion Result and status (FDC2114 only)
+
+Channel 3 MSB Conversion Result and status (FDC2214 only)
+
+Channel 3 LSB Conversion Result. Must be read after Register address 0x06 
+(FDC2214 only)
+
+Reference Count setting for Channel 0
+
+Reference Count setting for Channel 1
+
+Reference Count setting for Channel 2 (FDC2114 / FDC2214 only)
+
+Reference Count setting for Channel 3 (FDC2114 / FDC2214 only)
+
+Offset value for Channel 0 (FDC2112 / FDC2114 only)
+
+Offset value for Channel 1 (FDC2112 / FDC2114 only)
+
+Offset value for Channel 2 (FDC2114 only)
+
+Offset value for Channel 3 (FDC2114 only)
+
+Channel 0 Settling Reference Count
+
+Channel 1 Settling Reference Count
+
+Channel 2 Settling Reference Count (FDC2114 / FDC2214 only)
+
+Channel 3 Settling Reference Count (FDC2114 / FDC2214 only)
+
+Reference divider settings for Channel 0
+
+Reference divider settings for Channel 1
+
+Reference divider settings for Channel 2 (FDC2114 / FDC2214 only)
+
+Reference divider settings for Channel 3 (FDC2114 / FDC2214 only)
+
+Device Status Reporting
+
+Device Status Reporting Configuration
+
+Conversion Configuration
+
+0x020F
+
+Channel Multiplexing Configuration
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x0000
+
+0x5449
+
+0x3054
+
+0x3055
+
+Reset Device
+
+Channel 0 sensor current drive configuration
+
+Channel 1 sensor current drive configuration
+
+Channel 2 sensor current drive configuration (FDC2114 / FDC2214 only)
+
+Channel 3 sensor current drive configuration (FDC2114 / FDC2214 only)
+
+Manufacturer ID
+
+Device ID (FDC2112, FDC2114 only)
+
+Device ID (FDC2212, FDC2214 only)
+
+7.6.2 Address 0x00, DATA_CH0
+
+Figure 7-10. Address 0x00, DATA_CH0
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+13
+
+12
+
+CH0_ERR_WD CH0_ERR_AW
+
+5
+
+4
+
+DATA0
+
+11
+
+3
+
+DATA0
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-12. Address 0x00, DATA_CH0 Field Descriptions
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+Type
+
+Reset
+
+Description
+
+R
+
+00
+
+Reserved.
+
+22
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 7-12. Address 0x00, DATA_CH0 Field Descriptions (continued)
+
+Bit
+
+13
+
+Field
+
+CH0_ERR_WD
+
+12
+
+CH0_ERR_AW
+
+11:0
+
+DATA0 (FDC2112 / FDC2114 only)
+
+DATA0[27:16] (FDC2212 / FDC2214 
+only)
+
+Type
+
+Reset
+
+Description
+
+R
+
+R
+
+R
+
+0
+
+0
+
+Channel 0 Conversion Watchdog Timeout Error Flag. Cleared 
+by reading the bit.
+
+Channel 0 Amplitude Warning. Cleared by reading the bit.
+
+0000 0000 
+0000
+
+Channel 0 Conversion Result
+
+7.6.3 Address 0x01, DATA_LSB_CH0 (FDC2212 / FDC2214 only)
+
+Figure 7-11. Address 0x01, DATA_LSB_CH0
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+4
+
+DATA0
+
+DATA0
+
+11
+
+3
+
+10
+
+2
+
+Bit
+
+15:0
+
+Field
+
+DATA0[15:0]
+
+Table 7-13. Address 0x01, DATA_CH0 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R
+
+0000 0000 
+0000
+
+Channel 0 Conversion Result
+
+7.6.4 Address 0x02, DATA_CH1
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-12. Address 0x02, DATA_CH1
+
+13
+
+12
+
+CH1_ERR_WD CH1_ERR_AW
+
+5
+
+4
+
+DATA1
+
+11
+
+3
+
+DATA1
+
+10
+
+2
+
+9
+
+1
+
+9
+
+1
+
+8
+
+0
+
+8
+
+0
+
+Table 7-14. Address 0x02, DATA_CH1 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+13
+
+12
+
+CH1_ERR_WD
+
+CH1_ERR_AW
+
+11:0
+
+DATA1 (FDC2112 / FDC2114 only)
+
+DATA1[27:16] (FDC2212 / FDC2214 
+only)
+
+R
+
+R
+
+R
+
+R
+
+00
+
+0
+
+0
+
+Reserved.
+
+Channel 1 Conversion Watchdog Timeout Error Flag. Cleared 
+by reading the bit.
+
+Channel 1 Amplitude Warning. Cleared by reading the bit.
+
+0000 0000 
+0000
+
+Channel 1 Conversion Result
+
+7.6.5 Address 0x03, DATA_LSB_CH1 (FDC2212 / FDC2214 only)
+
+Figure 7-13. Address 0x03, DATA_LSB_CH1
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+4
+
+DATA1
+
+DATA1
+
+11
+
+3
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+23
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Bit
+
+15:0
+
+Field
+
+DATA1[15:0]
+
+Table 7-15. Address 0x03, DATA_CH1 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R
+
+0000 0000 
+0000
+
+Channel 1 Conversion Result
+
+7.6.6 Address 0x04, DATA_CH2 (FDC2114, FDC2214 only)
+
+Figure 7-14. Address 0x04, DATA_CH2
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+13
+
+12
+
+CH2_ERR_WD CH2_ERR_AW
+
+5
+
+4
+
+DATA2
+
+11
+
+3
+
+DATA2
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-16. Address 0x04, DATA_CH2 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+13
+
+12
+
+CH2_ERR_WD
+
+CH2_ERR_AW
+
+11:0
+
+DATA2 (FDC2112 / FDC2114 only)
+
+DATA2[27:16] (FDC2212 / FDC2214 
+only)
+
+R
+
+R
+
+R
+
+R
+
+00
+
+0
+
+0
+
+Reserved.
+
+Channel 2 Conversion Watchdog Timeout Error Flag. Cleared 
+by reading the bit.
+
+Channel 2 Amplitude Warning. Cleared by reading the bit.
+
+0000 0000 
+0000
+
+Channel 2 Conversion Result
+
+7.6.7 Address 0x05, DATA_LSB_CH2 (FDC2214 only)
+
+Figure 7-15. Address 0x05, DATA_LSB_CH2
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+4
+
+DATA2
+
+DATA2
+
+11
+
+3
+
+10
+
+2
+
+Bit
+
+15:0
+
+Field
+
+DATA2[15:0]
+
+Table 7-17. Address 0x05, DATA_CH2 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R
+
+0000 0000 
+0000
+
+Channel 2 Conversion Result
+
+7.6.8 Address 0x06, DATA_CH3 (FDC2114, FDC2214 only)
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-16. Address 0x06, DATA_CH3
+
+13
+
+12
+
+CH3_ERR_WD CH3_ERR_AW
+
+5
+
+4
+
+DATA3
+
+11
+
+3
+
+DATA3
+
+10
+
+2
+
+9
+
+1
+
+9
+
+1
+
+8
+
+0
+
+8
+
+0
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+13
+
+12
+
+CH3_ERR_WD
+
+CH3_ERR_AW
+
+Table 7-18. Address 0x06, DATA_CH3 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R
+
+R
+
+R
+
+00
+
+0
+
+0
+
+Reserved.
+
+Channel 3 Conversion Watchdog Timeout Error Flag. Cleared 
+by reading the bit.
+
+Channel 3 Amplitude Warning. Cleared by reading the bit.
+
+24
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+Bit
+
+11:0
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 7-18. Address 0x06, DATA_CH3 Field Descriptions (continued)
+
+Field
+
+Type
+
+Reset
+
+Description
+
+DATA3 (FDC2112 / FDC2114 only)
+
+R
+
+DATA3[27:16] (FDC2212 / FDC2214 
+only)
+
+0000 0000 
+0000
+
+Channel 3 Conversion Result
+
+7.6.9 Address 0x07, DATA_LSB_CH3 (FDC2214 only)
+
+Figure 7-17. Address 0x07, DATA_LSB_CH3
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+4
+
+DATA3
+
+DATA3
+
+11
+
+3
+
+10
+
+2
+
+Bit
+
+15:0
+
+Field
+
+DATA3[15:0]
+
+Table 7-19. Address 0x07, DATA_CH3 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R
+
+0000 0000 
+0000
+
+Channel 3 Conversion Result
+
+7.6.10 Address 0x08, RCOUNT_CH0
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-18. Address 0x08, RCOUNT_CH0
+10
+13
+
+12
+
+11
+
+CH0_RCOUNT
+
+5
+
+4
+
+3
+
+2
+
+CH0_RCOUNT
+
+9
+
+1
+
+9
+
+1
+
+8
+
+0
+
+8
+
+0
+
+Table 7-20. Address 0x08, RCOUNT_CH0 Field Descriptions
+
+Bit
+
+Field
+
+15:0
+
+CH0_RCOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+1000 0000
+
+Channel 0 Reference Count Conversion Interval Time
+0x0000-0x00FF: Reserved
+0x0100-0xFFFF: Conversion Time (tC0) = (CH0_RCOUNTˣ16)/
+fREF0
+
+7.6.11 Address 0x09, RCOUNT_CH1
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-19. Address 0x09, RCOUNT_CH1
+10
+13
+
+12
+
+11
+
+CH1_RCOUNT
+
+5
+
+4
+
+3
+
+2
+
+CH1_RCOUNT
+
+9
+
+1
+
+8
+
+0
+
+Table 7-21. Address 0x09, RCOUNT_CH1 Field Descriptions
+
+Bit
+
+Field
+
+15:0
+
+CH1_RCOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+1000 0000
+
+Channel 1 Reference Count Conversion Interval Time
+0x0000-0x00FF: Reserved
+0x0100-0xFFFF: Conversion Time (tC1)= (CH1_RCOUNTˣ16)/
+fREF1
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+25
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+7.6.12 Address 0x0A, RCOUNT_CH2 (FDC2114, FDC2214 only)
+
+15
+
+7
+
+14
+
+6
+
+Bit
+
+Field
+
+15:0
+
+CH2_RCOUNT
+
+Figure 7-20. Address 0x0A, RCOUNT_CH2
+10
+13
+
+12
+
+11
+
+CH2_RCOUNT
+
+5
+
+4
+
+3
+
+2
+
+CH2_RCOUNT
+
+9
+
+1
+
+8
+
+0
+
+Table 7-22. Address 0x0A, RCOUNT_CH2 Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R/W
+
+0000 0000 
+1000 0000
+
+Channel 2 Reference Count Conversion Interval Time
+0x0000-0x00FF: Reserved
+0x0100-0xFFFF: Conversion Time (tC2)= (CH2_RCOUNTˣ16)/
+fREF2
+
+7.6.13 Address 0x0B, RCOUNT_CH3 (FDC2114, FDC2214 only)
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-21. Address 0x0B, RCOUNT_CH3
+10
+13
+
+12
+
+11
+
+CH3_RCOUNT
+
+5
+
+4
+
+3
+
+2
+
+CH3_RCOUNT
+
+9
+
+1
+
+8
+
+0
+
+Table 7-23. Address 0x0B, RCOUNT_CH3 Field Descriptions
+
+Bit
+
+Field
+
+15:0
+
+CH3_RCOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+1000 0000
+
+Channel 3 Reference Count Conversion Interval Time
+0x0000-0x00FF: Reserved
+0x0100-0xFFFF: Conversion Time (tC3)= (CH3_RCOUNTˣ16)/
+fREF3
+
+26
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+7.6.14 Address 0x0C, OFFSET_CH0 (FDC21112 / FDC2114 only)
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-22. Address 0x0C, CH0_OFFSET
+10
+13
+
+12
+
+11
+
+CH0_OFFSET
+
+5
+
+4
+
+3
+
+2
+
+CH0_OFFSET
+
+Table 7-24. CH0_OFFSET Field Descriptions
+
+9
+
+1
+
+8
+
+0
+
+Bit
+
+Field
+
+15:0
+
+CH0_OFFSET
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 0 Conversion Offset. fOFFSET _0 = (CH0_OFFSET/
+216)*fREF0
+
+7.6.15 Address 0x0D, OFFSET_CH1 (FDC21112 / FDC2114 only)
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-23. Address 0x0D, OFFSET_CH1
+10
+13
+
+12
+
+11
+
+CH1_OFFSET
+
+5
+
+4
+
+3
+
+2
+
+CH1_OFFSET
+
+9
+
+1
+
+8
+
+0
+
+Table 7-25. Address 0x0D, OFFSET_CH1 Field Descriptions
+
+Bit
+
+Field
+
+15:0
+
+CH1_OFFSET
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 1 Conversion Offset. fOFFSET _1 = (CH1_OFFSET/
+216)*fREF1
+
+7.6.16 Address 0x0E, OFFSET_CH2 (FDC2114 only)
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-24. Address 0x0E, OFFSET_CH2
+10
+13
+
+12
+
+11
+
+CH2_OFFSET
+
+5
+
+4
+
+3
+
+2
+
+CH2_OFFSET
+
+9
+
+1
+
+8
+
+0
+
+Table 7-26. Address 0x0E, OFFSET_CH2 Field Descriptions
+
+Bit
+
+Field
+
+15:0
+
+CH2_OFFSET
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 2 Conversion Offset. fOFFSET _2 = (CH2_OFFSET/
+216)*fREF2
+
+7.6.17 Address 0x0F, OFFSET_CH3 (FDC2114 only)
+
+15
+
+7
+
+14
+
+6
+
+Figure 7-25. Address 0x0F, OFFSET_CH3
+10
+13
+
+12
+
+11
+
+CH3_OFFSET
+
+5
+
+4
+
+3
+
+2
+
+CH3_OFFSET
+
+9
+
+1
+
+8
+
+0
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+27
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Table 7-27. Address 0x0F, OFFSET_CH3 Field Descriptions
+
+Bit
+
+15:0
+
+Field
+
+CH3_OFFSET
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 3 Conversion Offset. fOFFSET _3 = (CH3_OFFSET/
+216)*fREF3
+
+7.6.18 Address 0x10, SETTLECOUNT_CH0
+
+Figure 7-26. Address 0x10, SETTLECOUNT_CH0
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+11
+
+CH0_SETTLECOUNT
+
+4
+
+3
+
+CH0_SETTLECOUNT
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-28. Address 0x11, SETTLECOUNT_CH0 Field Descriptions
+
+Bit
+
+15:0
+
+Field
+
+CH0_SETTLECOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 0 Conversion Settling
+The FDC uses this settling time to allow the LC sensor to 
+stabilize before initiation of a conversion on Channel 0.
+If the amplitude has not settled prior to the conversion start, 
+an Amplitude warning is generated if reporting of this type of 
+warning is enabled.
+b0000 0000 0000 0000: Settle Time (tS0)= 32 ÷ fREF0
+b0000 0000 0000 0001: Settle Time (tS0)= 32 ÷ fREF0
+b0000 0000 0000 0010 - b1111 1111 1111 1111: Settle Time 
+(tS0)= (CH0_SETTLECOUNTˣ16) ÷ fREF0
+
+7.6.19 Address 0x11, SETTLECOUNT_CH1
+
+Figure 7-27. Address 0x11, SETTLECOUNT_CH1
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+11
+
+CH1_SETTLECOUNT
+
+4
+
+3
+
+CH1_SETTLECOUNT
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-29. Address 0x12, SETTLECOUNT_CH1 Field Descriptions
+
+Bit
+
+15:0
+
+Field
+
+CH1_SETTLECOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 1 Conversion Settling
+The FDC uses this settling time to allow the LC sensor to 
+stabilize before initiation of a conversion on a Channel 1.
+If the amplitude has not settled prior to the conversion start, 
+an Amplitude warning is generated if reporting of this type of 
+warning is enabled.
+b0000 0000 0000 0000: Settle Time (tS1)= 32 ÷ fREF1
+b0000 0000 0000 0001: Settle Time (tS1)= 32 ÷ fREF1
+b0000 0000 0000 0010 - b1111 1111 1111 1111: Settle Time 
+(tS1)= (CH1_SETTLECOUNTˣ16) ÷ fREF1
+
+28
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+7.6.20 Address 0x12, SETTLECOUNT_CH2 (FDC2114, FDC2214 only)
+
+Figure 7-28. Address 0x12, SETTLECOUNT_CH2
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+11
+
+CH2_SETTLECOUNT
+
+4
+
+3
+
+CH2_SETTLECOUNT
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-30. Address 0x12, SETTLECOUNT_CH2 Field Descriptions
+
+Bit
+
+15:0
+
+Field
+
+CH2_SETTLECOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 2 Conversion Settling
+The FDC uses this settling time to allow the LC sensor to 
+stabilize before initiation of a conversion on Channel 2.
+If the amplitude has not settled prior to the conversion start, 
+an Amplitude warning is generated if reporting of this type of 
+warning is enabled.
+b0000 0000 0000 0000: Settle Time (tS2)= 32 ÷ fREF2
+b0000 0000 0000 0001: Settle Time (tS2)= 32 ÷ fREF2
+b0000 0000 0000 0010 - b1111 1111 1111 1111: Settle Time 
+(tS2)= (CH2_SETTLECOUNTˣ16) ÷ fREF2
+
+7.6.21 Address 0x13, SETTLECOUNT_CH3 (FDC2114, FDC2214 only)
+
+Figure 7-29. Address 0x13, SETTLECOUNT_CH3
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+12
+
+11
+
+CH3_SETTLECOUNT
+
+4
+
+3
+
+CH3_SETTLECOUNT
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-31. Address 0x13, SETTLECOUNT_CH3 Field Descriptions
+
+Bit
+
+15:0
+
+Field
+
+CH3_SETTLECOUNT
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0000 0000 
+0000 0000
+
+Channel 3 Conversion Settling
+The FDC uses this settling time to allow the LC sensor to 
+stabilize before initiation of a conversion on Channel 3.
+If the amplitude has not settled prior to the conversion start, 
+an Amplitude warning is generated if reporting of this type of 
+warning is enabled
+b0000 0000 0000 0000: Settle Time (tS3)= 32 ÷ fREF3
+b0000 0000 0000 0001: Settle Time (tS3)= 32 ÷ fREF3
+b0000 0000 0000 0010 - b1111 1111 1111 1111: Settle Time 
+(tS3)= (CH3_SETTLECOUNTˣ16) ÷ fREF3
+
+7.6.22 Address 0x14, CLOCK_DIVIDERS_CH0
+
+Figure 7-30. Address 0x14, CLOCK_DIVIDERS_CH0
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+CH0_FIN_SEL
+
+13
+
+5
+
+12
+
+4
+
+11
+
+3
+
+RESERVED
+
+10
+
+2
+
+9
+
+8
+
+CH0_FREF_DIVIDER
+
+1
+
+0
+
+CH0_FREF_DIVIDER
+
+Table 7-32. Address 0x14, CLOCK_DIVIDERS_CH0 Field Descriptions
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+00
+
+Reserved. Set to b00.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+29
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Table 7-32. Address 0x14, CLOCK_DIVIDERS_CH0 Field Descriptions (continued)
+
+Bit
+
+Field
+
+Type
+
+Reset
+
+Description
+
+13:12
+
+CH0_FIN_SEL
+
+R/W
+
+00
+
+Channel 0 Sensor frequency select
+for differential sensor configuration:
+b01: divide by 1. Choose for sensor frequencies between 
+0.01MHz and 8.75MHz
+b10: divide by 2. Choose for sensor frequencies between 5MHz 
+and 10MHz
+for single-ended sensor configuration:
+b10: divide by 2. Choose for sensor frequencies between 
+0.01MHz and 10MHz
+
+11:10
+
+RESERVED
+
+R/W
+
+00
+
+Reserved. Set to b00.
+
+9:0
+
+CH0_FREF_DIVIDER
+
+R/W
+
+7.6.23 Address 0x15, CLOCK_DIVIDERS_CH1
+
+00 0000 
+0000
+
+Channel 0 Reference Divider Sets the divider for Channel 0 
+reference. Use this to scale the maximum conversion frequency.
+b00’0000’0000: Reserved. Do not use.
+CH0_FREF_DIVIDER≥b00’0000’0001: fREF0 = fCLK/
+CH0_FREF_DIVIDER
+
+Figure 7-31. Address 0x15, CLOCK_DIVIDERS_CH1
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+CH1_FIN_SEL
+
+13
+
+5
+
+12
+
+4
+
+11
+
+3
+
+RESERVED
+
+10
+
+2
+
+9
+
+8
+
+CH1_FREF_DIVIDER
+
+1
+
+0
+
+CH1_FREF_DIVIDER
+
+Table 7-33. Address 0x15, CLOCK_DIVIDERS_CH1 Field Descriptions
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+Type
+
+R/W
+
+13:12
+
+CH1_FIN_SEL
+
+R/W
+
+Reset
+
+Description
+
+00
+
+0000
+
+Reserved. Set to b00.
+
+Channel 1 Sensor frequency select
+for differential sensor configuration:
+b01: divide by 1. Choose for sensor frequencies between 
+0.01MHz and 8.75MHz
+b10: divide by 2. Choose for sensor frequencies between 5MHz 
+and 10MHz
+for single-ended sensor configuration:
+b10: divide by 2. Choose for sensor frequencies between 
+0.01MHz and 10MHz
+
+11:10
+
+RESERVED
+
+R/W
+
+00
+
+Reserved. Set to b00.
+
+9:0
+
+CH1_FREF_DIVIDER
+
+R/W
+
+00 0000 
+0000
+
+Channel 1 Reference Divider Sets the divider for Channel 1 
+reference. Use this to scale the maximum conversion frequency.
+b00’0000’0000: Reserved. Do not use.
+CH1_FREF_DIVIDER≥ b00’0000’0001: fREF1 = fCLK/
+CH1_FREF_DIVIDER
+
+7.6.24 Address 0x16, CLOCK_DIVIDERS_CH2 (FDC2114, FDC2214 only)
+
+Figure 7-32. Address 0x16, CLOCK_DIVIDERS_CH2
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+CH2_FIN_SEL
+
+13
+
+5
+
+12
+
+4
+
+11
+
+3
+
+RESERVED
+
+10
+
+2
+
+9
+
+8
+
+CH2_FREF_DIVIDER
+
+1
+
+0
+
+CH2_FREF_DIVIDER
+
+Table 7-34. Address 0x16, CLOCK_DIVIDERS_CH2 Field Descriptions
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+00
+
+Reserved. Set to b00.
+
+30
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 7-34. Address 0x16, CLOCK_DIVIDERS_CH2 Field Descriptions (continued)
+
+Bit
+
+Field
+
+13:12
+
+CH2_FIN_SEL
+
+Type
+
+R/W
+
+Reset
+
+0000
+
+Description
+
+Channel 2 Sensor frequency select
+for differential sensor configuration:
+b01: divide by 1. Choose for sensor frequencies between 
+0.01MHz and 8.75MHz
+b10: divide by 2. Choose for sensor frequencies between 5MHz 
+and 10MHz
+for single-ended sensor configuration:
+b10: divide by 2. Choose for sensor frequencies between 
+0.01MHz and 10MHz
+
+11:10
+
+RESERVED
+
+9:0
+
+CH2_FREF_DIVIDER
+
+R/W
+
+R/W
+
+00
+
+Reserved. Set to b00.
+
+00 0000 
+0000
+
+Channel 2 Reference Divider Sets the divider for Channel 2 
+reference. Use this to scale the maximum conversion frequency.
+b00’0000’0000: Reserved. Do not use.
+CH2_FREF_DIVIDER ≥ b00’0000’0001: fREF2 = fCLK/
+CH2_FREF_DIVIDER
+
+7.6.25 Address 0x17, CLOCK_DIVIDERS_CH3 (FDC2114, FDC2214 only)
+
+Figure 7-33. Address 0x17, CLOCK_DIVIDERS_CH3
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+CH3_FIN_SEL
+
+13
+
+5
+
+12
+
+4
+
+11
+
+3
+
+RESERVED
+
+10
+
+2
+
+9
+
+8
+
+CH3_FREF_DIVIDER
+
+1
+
+0
+
+CH3_FREF_DIVIDER
+
+Table 7-35. Address 0x17, CLOCK_DIVIDERS_CH3
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+13:12
+
+CH3_FIN_SEL
+
+Type
+
+R/W
+
+R/W
+
+11:10
+
+RESERVED
+
+9:0
+
+CH3_FREF_DIVIDER
+
+R/W
+
+R/W
+
+Reset
+
+Description
+
+00
+
+0000
+
+Reserved. Set to b00.
+
+Channel 3 Sensor frequency select
+for differential sensor configuration:
+b01: divide by 1. Choose for sensor frequencies between 
+0.01MHz and 8.75MHz
+b10: divide by 2. Choose for sensor frequencies between 5MHz 
+and 10MHz
+for single-ended sensor configuration:
+b10: divide by 2. Choose for sensor frequencies between 
+0.01MHz and 10MHz
+
+00
+
+Reserved. Set to b00.
+
+00 0000 
+0000
+
+Channel 3 Reference Divider Sets the divider for Channel 3 
+reference. Use this to scale the maximum conversion frequency.
+b00’0000’0000: reserved
+CH3_FREF_DIVIDER ≥ b00’0000’0001: fREF3 = fCLK/
+CH3_FREF_DIVIDER
+
+7.6.26 Address 0x18, STATUS
+
+Figure 7-34. Address 0x18, STATUS
+
+ERR_CHAN
+
+15
+
+7
+
+14
+
+6
+
+13
+
+5
+
+RESERVED
+
+12
+
+4
+
+11
+
+ERR_WD
+
+3
+
+10
+
+2
+
+9
+
+RESERVED
+
+1
+
+8
+
+0
+
+RESERVED
+
+DRDY
+
+RESERVED
+
+CH0_UNREAD
+CONV
+
+CH1_ 
+UNREADCONV
+
+CH2_ 
+UNREADCONV
+
+CH3_ 
+UNREADCONV
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+31
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Table 7-36. Address 0x18, STATUS Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+Bit
+
+Field
+
+15:14
+
+ERR_CHAN
+
+13:12
+
+RESERVED
+
+11
+
+ERR_WD
+
+10
+
+ERR_AHW
+
+9
+
+ERR_ALW
+
+8:7
+
+6
+
+RESERVED
+
+DRDY
+
+3
+
+2
+
+1
+
+CH0_UNREADCONV
+
+CH1_ UNREADCONV
+
+CH2_ UNREADCONV
+
+0
+
+CH3_ UNREADCONV
+
+R
+
+00
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+00
+
+0
+
+0
+
+0
+
+00
+
+0
+
+0
+
+0
+
+0
+
+0
+
+Error Channel
+Indicates which channel has generated a Flag or Error. When 
+flagged, any reported error is latched and maintained until either 
+the STATUS register or the DATA_CHx register corresponding to 
+the Error Channel is read.
+b00: Channel 0 is source of flag or error.
+b01: Channel 1 is source of flag or error.
+b10: Channel 2 is source of flag or error (FDC2114, FDC2214 
+only).
+b11: Channel 3 is source of flag or error (FDC2114, FDC2214 
+only).
+
+Reserved
+
+Watchdog Timeout Error
+b0: No Watchdog Timeout error was recorded since the last 
+read of the STATUS register.
+b1: An active channel has generated a Watchdog Timeout error. 
+Refer to STATUS.ERR_CHAN field to determine which channel 
+is the source of this error.
+
+Amplitude High Warning
+b0: No Amplitude High warning was recorded since the last read 
+of the STATUS register.
+b1: An active channel has generated an Amplitude High 
+warning. Refer to STATUS.ERR_CHAN field to determine which 
+channel is the source of this warning.
+
+Amplitude Low Warning
+b0: No Amplitude Low warning was recorded since the last read 
+of the STATUS register.
+b1: An active channel has generated an Amplitude Low warning. 
+Refer to STATUS.ERR_CHAN field to determine which channel 
+is the source of this warning.
+
+Reserved
+
+Data Ready Flag.
+b0: No new conversion result was recorded in the STATUS 
+register.
+b1: A new conversion result is ready. When in Single Channel 
+Conversion, this indicates a single conversion is available. 
+When in sequential mode, this indicates that a new conversion 
+result for all active channels is now available.
+
+Channel 0 Unread Conversion b0: No unread conversion is 
+present for Channel 0.
+b1: An unread conversion is present for Channel 0.
+Read Register DATA_CH0 to retrieve conversion results.
+
+Channel 1 Unread Conversion b0: No unread conversion is 
+present for Channel 1.
+b1: An unread conversion is present for Channel 1.
+Read Register DATA_CH1 to retrieve conversion results.
+
+Channel 2 Unread Conversion b0: No unread conversion is 
+present for Channel 2.
+b1: An unread conversion is present for Channel 2.
+Read Register DATA_CH2 to retrieve conversion results 
+(FDC2114, FDC2214 only)
+
+Channel 3 Unread Conversion
+b0: No unread conversion is present for Channel 3.
+b1: An unread conversion is present for Channel 3.
+Read Register DATA_CH3 to retrieve conversion results 
+(FDC2114, FDC2214 only)
+
+32
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+7.6.27 Address 0x19, ERROR_CONFIG
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Figure 7-35. Address 0x19, ERROR_CONFIG
+
+RESERVED
+
+15
+
+7
+
+14
+
+6
+
+13
+
+12
+
+11
+
+WD_ 
+ERR2OUT
+
+AH_WARN2OU
+T
+
+AL_WARN2OU
+T
+
+5
+
+4
+
+3
+
+10
+
+2
+
+9
+
+RESERVED
+
+1
+
+8
+
+0
+
+RESERVED
+
+WD_ERR2INT
+
+RESERVED
+
+DRDY_2INT
+
+Table 7-37. Address 0x19, ERROR_CONFIG
+
+Bit
+
+Field
+
+15:14
+
+RESERVED
+
+13
+
+WD_ ERR2OUT
+
+Type
+
+R/W
+
+R/W
+
+00
+
+0
+
+Reset
+
+Description
+
+12
+
+AH_WARN2OUT
+
+R/W
+
+0
+
+11
+
+AL_WARN2OUT
+
+R/W
+
+0
+
+Reserved (set to b000)
+
+Watchdog Timeout Error to Output Register
+b0: Do not report Watchdog Timeout errors in the DATA_CHx 
+registers.
+b1: Report Watchdog Timeout errors in the 
+DATA_CHx.CHx_ERR_WD register field corresponding to the 
+channel that generated the error.
+
+Amplitude High Warning to Output Register
+b0:Do not report Amplitude High warnings in the DATA_CHx 
+registers.
+b1: Report Amplitude High warnings in the 
+DATA_CHx.CHx_ERR_AW register field corresponding to the 
+channel that generated the warning.
+
+Amplitude Low Warning to Output Register
+b0: Do not report Amplitude Low warnings in the DATA_CHx 
+registers.
+b1: Report Amplitude High warnings in the 
+DATA_CHx.CHx_ERR_AW register field corresponding to the 
+channel that generated the warning.
+
+10:6
+
+RESERVED
+
+5
+
+WD_ERR2INT
+
+R/W
+
+R/W
+
+0 0000
+
+Reserved (set to b0 0000)
+
+0
+
+Watchdog Timeout Error to INTB b0: Do not report Under-range 
+errors by asserting INTB pin and STATUS register.
+b1: Report Watchdog Timeout errors by asserting INTB pin and 
+updating STATUS.ERR_WD register field.
+
+4:1
+
+0
+
+Reserved
+
+DRDY_2INT
+
+R/W
+
+R/W
+
+0000
+
+0
+
+Reserved (set to b000)
+
+Data Ready Flag to INTB b0: Do not report Data Ready Flag by 
+asserting INTB pin and STATUS register.
+b1: Report Data Ready Flag by asserting INTB pin and updating 
+STATUS. DRDY register field.
+
+7.6.28 Address 0x1A, CONFIG
+
+Figure 7-36. Address 0x1A, CONFIG
+
+15
+
+14
+
+13
+
+12
+
+11
+
+10
+
+9
+
+8
+
+ACTIVE_CHAN
+
+SLEEP_MODE
+_EN
+
+RESERVED
+
+SENSOR_ACTI
+VATE_SEL
+
+RESERVED
+
+REF_CLK_SRC
+
+RESERVED
+
+7
+
+6
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0
+
+INTB_DIS
+
+HIGH_CURRE
+NT_DRV
+
+RESERVED
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+33
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Table 7-38. Address 0x1A, CONFIG Field Descriptions
+
+Bit
+
+Field
+
+15:14
+
+ACTIVE_CHAN
+
+Type
+
+R/W
+
+13
+
+SLEEP_MODE_EN
+
+R/W
+
+12
+
+11
+
+RESERVED
+
+SENSOR_ACTIVATE_SEL
+
+R/W
+
+R/W
+
+10
+
+9
+
+RESERVED
+
+REF_CLK_SRC
+
+8
+
+7
+
+6
+
+RESERVED
+
+INTB_DIS
+
+HIGH_CURRENT_DRV
+
+R/W
+
+R/W
+
+R/W
+
+R/W
+
+R/W
+
+Reset
+
+Description
+
+00
+
+1
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+Active Channel Selection
+Selects channel for continuous conversions when 
+MUX_CONFIG.SEQUENTIAL is 0.
+b00: Perform continuous conversions on Channel 0
+b01: Perform continuous conversions on Channel 1
+b10: Perform continuous conversions on Channel 2 (FDC2114, 
+FDC2214 only)
+b11: Perform continuous conversions on Channel 3 (FDC2114, 
+FDC2214 only)
+
+Sleep Mode Enable
+Enter or exit low power Sleep Mode.
+b0: Device is active.
+b1: Device is in Sleep Mode.
+
+Reserved. Set to b1.
+
+Sensor Activation Mode Selection.
+Set the mode for sensor initialization.
+b0: Full Current Activation Mode – the FDC drives maximum 
+sensor current for a shorter sensor activation time.
+b1: Low Power Activation Mode – the FDC uses the 
+value programmed in DRIVE_CURRENT_CHx during sensor 
+activation to minimize power consumption.
+
+Reserved. Set to b1.
+
+Select Reference Frequency Source
+b0: Use Internal oscillator as reference frequency
+b1: Reference frequency is provided from CLKIN pin.
+
+Reserved. Set to b0.
+
+INTB Disable
+b0: Asserts INTB pin when status register updates.
+b1: Does not assert INTB pin when status register updates
+
+High Current Sensor Drive
+b0: The FDC drives all channels with normal sensor current 
+(1.5mA maximum).
+b1: The FDC drives channel 0 with current >1.5mA.
+This mode is not supported if AUTOSCAN_EN = b1 (multi-
+channel mode)
+
+5:0
+
+RESERVED
+
+R/W
+
+00 0001
+
+Reserved Set to b00’0001
+
+7.6.29 Address 0x1B, MUX_CONFIG
+
+15
+
+14
+
+Figure 7-37. Address 0x1B, MUX_CONFIG
+10
+13
+
+12
+
+11
+
+AUTOSCAN_E
+N
+
+RR_SEQUENCE
+
+RESERVED
+
+7
+
+6
+
+5
+
+4
+
+3
+
+2
+
+9
+
+1
+
+8
+
+0
+
+RESERVED
+
+DEGLITCH
+
+Table 7-39. Address 0x1B, MUX_CONFIG Field Descriptions
+
+Bit
+
+15
+
+Field
+
+AUTOSCAN_EN
+
+Type
+
+R/W
+
+Reset
+
+Description
+
+0
+
+Auto-Scan Mode Enable
+b0: Continuous conversion on the single channel selected by 
+CONFIG.ACTIVE_CHAN register field.
+b1: Auto-Scan conversions as selected by 
+MUX_CONFIG.RR_SEQUENCE register field.
+
+34
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 7-39. Address 0x1B, MUX_CONFIG Field Descriptions (continued)
+
+Bit
+
+Field
+
+14:13
+
+RR_SEQUENCE
+
+Type
+
+R/W
+
+00
+
+Reset
+
+Description
+
+Auto-Scan Sequence Configuration Configure multiplexing 
+channel sequence. The FDC performs a single conversion on 
+each channel in the sequence selected, and then restart the 
+sequence continuously.
+b00: Ch0, Ch1
+b01: Ch0, Ch1, Ch2 (FDC2114, FDC2214 only)
+b10: Ch0, Ch1, Ch2, Ch3 (FDC2114, FDC2214 only)
+b11: Ch0, Ch1
+
+Reserved. Must be set to 00 0100 0001
+
+Input deglitch filter bandwidth.
+Select the lowest setting that exceeds the oscillation tank 
+oscillation frequency.
+b001: 1MHz
+b100: 3.3MHz
+b101: 10MHz
+b111: 33MHz
+
+12:3
+
+RESERVED
+
+2:0
+
+DEGLITCH
+
+R/W
+
+00 0100 
+0001
+
+R/W
+
+111
+
+7.6.30 Address 0x1C, RESET_DEV
+
+15
+
+RESET_DEV
+
+7
+
+14
+
+6
+
+Figure 7-38. Address 0x1C, RESET_DEV
+10
+13
+
+12
+
+11
+
+RESERVED
+
+OUTPUT_GAIN
+
+5
+
+4
+
+3
+
+2
+
+RESERVED
+
+Table 7-40. Address 0x1C, RESET_DEV Field Descriptions
+
+9
+
+1
+
+8
+
+RESERVED
+
+0
+
+Bit
+
+15
+
+Field
+
+RESET_DEV
+
+14:11
+
+RESERVED
+
+10:9
+
+OUTPUT_GAIN
+
+Type
+
+R/W
+
+R/W
+
+R/W
+
+0
+
+0000
+
+00
+
+Reset
+
+Description
+
+Device Reset
+Write b1 to reset the device. Will always readback 0.
+
+Reserved. Set to b0000
+
+Output gain control (FDC2112, FDC2114 only)
+00: Gain =1 (0 bits shift)
+01: Gain = 4 (2 bits shift)
+10: Gain = 8 (3 bits shift)
+11: Gain = 16 (4 bits shift)
+
+Reserved, Set to b0 0000 0000
+
+8:0
+
+RESERVED
+
+R/W
+
+0 0000 
+0000
+
+7.6.31 Address 0x1E, DRIVE_CURRENT_CH0
+
+Figure 7-39. Address 0x1E, DRIVE_CURRENT_CH0
+
+15
+
+7
+
+14
+
+6
+
+13
+
+CH0_IDRIVE
+
+5
+
+12
+
+4
+
+11
+
+3
+
+10
+
+2
+
+9
+
+RESERVED
+
+1
+
+8
+
+0
+
+RESERVED
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+35
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Table 7-41. Address 0x1E, DRIVE_CURRENT_CH0 Field Descriptions
+
+Bit
+
+Field
+
+15:11
+
+CH0_IDRIVE
+
+Type
+
+R/W
+
+Reset
+
+0000 0
+
+Description
+
+Channel 0 Sensor drive current
+This field defines the Drive Current used during the settling + 
+conversion time of Channel 0 sensor clock. Set such that 1.2V ≤ 
+sensor oscillation amplitude (pk) ≤ 1.8V
+00000: 0.016mA
+00001: 0.018mA
+00010: 0.021mA
+00011: 0.025mA
+00100: 0.028mA
+00101: 0.033mA
+00110: 0.038mA
+00111: 0.044mA
+01000: 0.052mA
+01001: 0.060mA
+01010: 0.069mA
+01011: 0.081mA
+01100: 0.093mA
+01101: 0.108mA
+01110: 0.126mA
+01111: 0.146mA
+10000: 0.169mA
+10001: 0.196mA
+10010: 0.228mA
+10011: 0.264mA
+10100: 0.307mA
+10101: 0.356mA
+10110: 0.413mA
+10111: 0.479mA
+11000: 0.555mA
+11001: 0.644mA
+11010: 0.747mA
+11011: 0.867mA
+11100: 1.006mA
+11101: 1.167mA
+11110: 1.354mA
+11111: 1.571mA
+
+10:0
+
+RESERVED
+
+–
+
+000 0000 
+0000
+
+Reserved
+
+7.6.32 Address 0x1F, DRIVE_CURRENT_CH1
+
+Figure 7-40. Address 0x1F, DRIVE_CURRENT_CH1
+
+15
+
+7
+
+14
+
+6
+
+13
+
+CH1_IDRIVE
+
+5
+
+12
+
+4
+
+11
+
+3
+
+10
+
+2
+
+9
+
+RESERVED
+
+1
+
+8
+
+0
+
+RESERVED
+
+Table 7-42. Address 0x1F, DRIVE_CURRENT_CH1 Field Descriptions
+
+Bit
+
+Field
+
+15:11
+
+CH1_IDRIVE
+
+Type
+
+R/W
+
+Reset
+
+0000 0
+
+Description
+
+Channel 1 Sensor drive current
+This field defines the Drive Current used during the settling + 
+conversion time of Channel 1 sensor clock. Set such that 1.2V ≤ 
+sensor oscillation amplitude (pk) ≤ 1.8V
+00000: 0.016mA
+00001: 0.018mA
+00010: 0.021mA
+...
+11111: 1.571mA
+
+36
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Table 7-42. Address 0x1F, DRIVE_CURRENT_CH1 Field Descriptions (continued)
+
+Bit
+
+10:0
+
+Field
+
+RESERVED
+
+Type
+
+Reset
+
+Description
+
+-
+
+000 0000 
+0000
+
+Reserved
+
+7.6.33 Address 0x20, DRIVE_CURRENT_CH2 (FDC2114 / FDC2214 only)
+
+Figure 7-41. Address 0x20, DRIVE_CURRENT_CH2
+
+15
+
+7
+
+14
+
+6
+
+13
+
+CH2_IDRIVE
+
+5
+
+12
+
+4
+
+11
+
+3
+
+10
+
+2
+
+9
+
+RESERVED
+
+1
+
+8
+
+0
+
+RESERVED
+
+Table 7-43. Address 0x20, DRIVE_CURRENT_CH2 Field Descriptions
+
+Bit
+
+Field
+
+15:11
+
+CH2_IDRIVE
+
+Type
+
+R/W
+
+Reset
+
+0000 0
+
+Description
+
+Channel 2 Sensor drive current
+This field defines the Drive Current to be used during the settling 
++ conversion time of Channel 2 sensor clock. Set such that 1.2V 
+≤ sensor oscillation amplitude (pk) ≤ 1.8V
+00000: 0.016mA
+00001: 0.018mA
+00010: 0.021mA
+...
+11111: 1.571mA
+
+10:0
+
+RESERVED
+
+–
+
+000 0000 
+0000
+
+Reserved
+
+7.6.34 Address 0x21, DRIVE_CURRENT_CH3 (FDC2114 / FDC2214 only)
+
+Figure 7-42. Address 0x21, DRIVE_CURRENT_CH3
+
+15
+
+7
+
+14
+
+6
+
+13
+
+CH3_IDRIVE
+
+5
+
+12
+
+4
+
+11
+
+3
+
+10
+
+2
+
+9
+
+RESERVED
+
+1
+
+8
+
+0
+
+RESERVED
+
+Table 7-44. DRIVE_CURRENT_CH3 Field Descriptions
+
+Bit
+
+Field
+
+15:11
+
+CH3_IDRIVE
+
+Type
+
+R/W
+
+Reset
+
+0000 0
+
+Description
+
+Channel 3 Sensor drive current
+This field defines the Drive Current to be used during the settling 
++ conversion time of Channel 3 sensor clock. Set such that 1.2V 
+≤ sensor oscillation amplitude (pk) ≤ 1.8V
+00000: 0.016mA
+00001: 0.018mA
+00010: 0.021mA
+...
+11111: 1.571mA
+
+10:0
+
+RESERVED
+
+–
+
+000 0000 
+0000
+
+Reserved
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+37
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+7.6.35 Address 0x7E, MANUFACTURER_ID
+
+www.ti.com
+
+15
+
+7
+
+Bit
+
+15:0
+
+Figure 7-43. Address 0x7E, MANUFACTURER_ID
+
+14
+
+6
+
+13
+
+5
+
+12
+
+11
+
+MANUFACTURER_ID
+
+4
+
+3
+
+MANUFACTURER_ID
+
+10
+
+2
+
+9
+
+1
+
+8
+
+0
+
+Table 7-45. Address 0x7E, MANUFACTURER_ID Field Descriptions
+
+Field
+
+Type
+
+Reset
+
+Description
+
+MANUFACTURER_ID
+
+R
+
+0101 0100 
+0100 1001
+
+Manufacturer ID = 0x5449
+
+7.6.36 Address 0x7F, DEVICE_ID
+
+7
+
+6
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0
+
+Figure 7-44. Address 0x7F, DEVICE_ID
+
+DEVICE_ID
+
+Bit
+
+7:0
+
+Field
+
+DEVICE_ID
+
+Table 7-46. Address 0x7F, DEVICE_ID Field Descriptions
+
+Type
+
+Reset
+
+Description
+
+R
+
+0011 0000 
+0101 0100
+
+Device ID
+0x3054 (FDC2112, FDC2114 only)
+0x3055 (FDC2212, FDC2214 only)
+
+38
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+8 Application and Implementation
+
+Note
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Information  in  the  following  applications  sections  is  not  part  of  the  TI  component  specification, 
+and  TI  does  not  warrant  its  accuracy  or  completeness.  TI’s  customers  are  responsible  for 
+determining suitability of components for their purposes, as well as validating and testing their design 
+implementation to confirm system functionality.
+
+8.1 Application Information
+8.1.1 Sensor Configuration
+
+The  FDC  supports  two  sensor  configurations.  Both  configurations  use  an  LC  tank  to  set  the  frequency  of 
+oscillation. A typical choice is an 18 μH shielded SMD inductor in parallel with a 33pF capacitor, which result in 
+a 6.5MHz oscillation frequency. In the single-ended configuration in Figure 8-1, a conductive plate is connected 
+IN0A. Together with a target object, the conductive plate forms a variable capacitor.
+
+Figure 8-1. Single-Ended Sensor Configuration
+
+In the differential sensor configuration in Figure 8-2, one conductive plate is connected to IN0A, and a second 
+conductive  plate  is  connected  to  IN0B.  Together,  they  form  a  variable  capacitor.  When  using  an  single-ended 
+sensor configuration, set CHx_FIN_SEL to b10 (divide by 2).
+
+Figure 8-2. Differential Sensor Configuration
+
+The  single-ended  configuration  allows  higher  sensing  range  than  the  differential  configuration  for  a  given 
+total  sensor  plate  area.  In  applications  in  which  high  sensitivity  at  close  proximity  is  desired,  the  differential 
+configuration performs better than the single-ended configuration.
+
+8.1.2 Shield
+
+in order to minimize interference from external objects, some applications require an additional plate which acts 
+as a shield. The shield can either be:
+
+• actively driven shield: The shield is a buffered signal of the INxA pin. The signal is buffered by an external 
+
+amplifier with a gain of 1.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+39
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC211x / FDC221xIN0AIN0BL18 (cid:29)H C33 pFCopyright © 2016, Texas Instruments IncorporatedSensor plateTarget objectFDC211x / FDC221xIN0AIN0BL18 (cid:29)HC33 pF Copyright © 2016, Texas Instruments IncorporatedSensor plate (1)Target objectSensor plate (2)Target objectFDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+• passive shield: The shield is connected to GND. Adding a passive shield decreases sensitivity of the sensor, 
+but is dependent on the distance between the distance between the sensing plate and the shield. Adjust the 
+distance between the sensing plate and the shield to achieve the required sensitivity
+
+8.1.3 Power-Cycled Applications
+
+For  applications  which  do  not  require  high  sample  rates  or  maximum  conversion  resolution,  the  total  active 
+conversion  time  of  the  FDC  can  be  minimized  to  reduce  power  consumption.  This  can  be  done  by  either  by 
+using sleep mode or shutdown mode during times in which conversions are not required (see Device Functional 
+Modes).
+
+As  an  example,  for  an  application  which  only  needs  10  samples  per  second  with  a  resolution  of  16  bits  can 
+utilize the low-power modes. The sensor requires SETTLECOUNT = 16 and IDRIVE of 01111b (0.146mA). Given 
+FREF = 40MHz and RCOUNT = 4096 will provide the resolution required. This corresponds to 4096 * 16 * 10 / 
+40MHz  →  16.4ms  of  active  conversion  time  per  second.  Start-up  time  and  channel  switch  delay  account  for 
+an additional 0.34ms. For the remainder of the time, the device can be in sleep mode: Therefore, the average 
+current is 19.4ms * 3.6mA active current + 980.6ms of 35µA of sleep current, which is approximately 104.6µA of 
+average supply current. Sleep mode retains register settings and therefore requires less I2C writes to wake up 
+the FDC than shutdown mode.
+
+Greater current savings can be realized by use of shutdown mode during inactive periods. In shutdown mode, 
+device configuration is not retained, and so the device must be configured for each sample. For this example, 
+configuring each sample takes approximately  1.2ms (13 registers * 92.5 µs per register). The total active time 
+is  20.6ms.  The  average  current  is  20ms  *  3.6mA  active  current  +  980ms  *  2µA  of  shutdown  current,  which  is 
+approximately 75µA of average supply current.
+
+8.1.4 Inductor Self-Resonant Frequency
+
+Every  inductor  has  a  distributed  parasitic  capacitance,  which  is  dependent  on  construction  and  geometry. 
+At  the  Self-Resonant  Frequency  (SRF),  the  reactance  of  the  inductor  cancels  the  reactance  of  the  parasitic 
+capacitance.  Above  the  SRF,  the  inductor  electrically  appears  to  be  a  capacitor.  Because  the  parasitic 
+capacitance is not well-controlled or stable, TI recommends that fSENSOR < 0.8 × fSR.
+
+Figure 8-3. Example Coil Inductance vs Frequency
+
+The  example  inductor  in  Figure  8-3,  has  a  SRF  at  6.38MHz;  therefore  do  not  operate  the  inductor  above 
+0.8×6.38MHz, or 5.1MHz.
+
+8.1.5 Application Curves
+
+Common  test  conditions  (unless  specified  otherwise):  Sensor  capacitor:  1  layer,  20.9  x  13.9mm,  Bourns 
+CMH322522-180KL  sensor  inductor  with  L=18  µH  and  33pF  1%  COG/NP0  Target:  Grounded  aluminum 
+plate  (176  x  123mm),  Channel  =  Channel  0  (continuous  mode)  CLKIN  =  40MHz,  CHx_FIN_SEL  = 
+b10,  CHx_FREF_DIVIDER  =  b00  0000  0001  CH0_RCOUNT  =  0xFFFF,  SETTLECOUNT_CH0  =  0x0100, 
+DRIVE_CURRENT_CH0 = 0x7800
+
+40
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+0.025.050.075.0100.0125.0150.0175.00.01.02.03.04.05.06.07.08.0Frequency (MHz)Ls (µH)www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Figure 8-4. FDC2212 / FDC2214: Capacitance vs. 
+Target Distance (0 to 20mm)
+
+Figure 8-5. FDC2112 / FDC2114: Capacitance vs. 
+Target Distance (20 to 40mm)
+
+Figure 8-6. FDC2212 / FDC2214: Capacitance vs. 
+Target Distance (40 to 60mm)
+
+Figure 8-7. Measurement precision in Distance vs. 
+Target Distance (0 to 60mm)
+
+8.2 Typical Application
+
+The  FDC  can  be  used  to  measure  liquid  level  in  non-conductive  containers.  Due  to  very  high  excitation 
+rate  capability,  the  FDC  is  able  to  measure  soapy  water,  ink,  soap,  and  other  conductive  liquids.  Capacitive 
+sensors can be attached to the outside of the container or be located remotely from the container, allowing for 
+contactless measurements.
+
+The  working  principle  is  based  on  a  ratiometric  measurement;  Figure  8-8  shows  a  possible  system 
+implementation  which  uses  three  electrodes.  The  Level  electrode  provides  a  capacitance  value  proportional 
+to  the  liquid  level.  The  Reference  Environmental  electrode  and  the  Reference  Liquid  electrode  are  used  as 
+references. The Reference Liquid electrode accounts for the liquid dielectric constant and the variation, while the 
+Reference  Environmental  electrode  is  used  to  compensate  for  any  other  environmental  variations  that  are  not 
+due to the liquid itself. Note that the Reference Environmental electrode and the Reference Liquid electrode are 
+the same physical size (hREF).
+
+For  this  application,  single-ended  measurements  on  the  active  channels  are  appropriate,  as  the  tank  is 
+grounded. Use Equation to determine the liquid level from the measured capacitances:
+
+where
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+41
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+Target Distance (mm) with 20.9 x 13.9 mm SensorCapacitance (pF)024681012141618200510152025D028Target Distance (mm) with 20.9 x 13.9 mm SensorCapacitance (pF)202224262830323436384000.020.040.060.080.10.120.14D029Target Distance (mm) with 20.9 x 13.9 mm SensorCapacitance (pF)404244464850525456586000.0050.010.0150.020.0250.030.035D030Target Distance (mm) with 20.9 x 13.9 mm SensorMeasurement Precision (mm)020406080100012345678910D0324.08 ksps610 sps38 sps(0)(cid:16) (cid:16)LevLevrefRLRECCLevelhCCFDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+• CRE is the capacitance of the Reference Environmental electrode,
+• CRL is the capacitance of the Reference Liquid electrode,
+• CLev is the current value of the capacitance measured at the Level electrode sensor,
+• CLev(0) is the capacitance of the Level electrode when the container is empty, and
+• hREF is the height in the desired units of the Container or Liquid Reference electrodes.
+
+The  ratio  between  the  capacitance  of  the  level  and  the  reference  electrodes  allows  simple  calculation  of  the 
+liquid level inside the container itself. Very high sensitivity values (that is, many LSB/mm) can be obtained due 
+to  the  high  resolution  of  the  FDC2x1x,  even  when  the  sensors  are  located  remotely  from  the  container.  Note 
+that  this  approach  assumes  that  the  container  has  a  uniform  cross  section  from  top  to  bottom,  so  that  each 
+incremental increase or decrease in the liquid represents a change in volume that is directly related to the height 
+of the liquid.
+
+8.2.1 Schematic
+
+Figure 8-8. FDC (Liquid Level Measurement)
+
+8.2.2 Design Requirements
+
+Make  sure  the  liquid  level  measurement  are  independent  of  the  liquid,  which  can  be  achieved  using  the 
+3-electrode  design  described  above.  Moreover,  isolate  the  sensor  from  environmental  interferences  such  as 
+a human body, other objects, or EMI.
+
+8.2.3 Detailed Design Procedure
+
+In  capacitive  sensing  systems,  the  design  of  the  sensor  plays  an  important  role  in  determining  system 
+performance  and  capabilities.  In  most  cases  the  sensor  is  simply  a  metal  plate  that  can  be  designed  on  the 
+PCB.
+
+The  sensor  used  in  this  example  is  implemented  with  a  two-layer  PCB.  On  the  top  layer,  which  faces  the 
+tank,  there  are  the  3  electrodes  (Reference  Environmental,  Reference  Liquid,  and  Level)  with  a  ground  plane 
+surrounding the electrodes.
+
+42
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+ENVIRONMENTAL SENSORLIQUID SENSORLEVEL SENSORIN0AIN0BIN1AIN1BFDC2114 / FDC2214VDDGNDSCLSDAInt. Osc.ADDRINTBSDGNDMCUVDD3.3 V3.3 VGPIOGPIO0.1 (cid:29)F1 (cid:29)FCoreResonant circuit driverResonant circuit driverI2CI2Cperipheral  3.3 VCLKIN40 MHzLCap Sensor 0CLCap Sensor 1CIN2AIN2BIN3AIN3BResonant circuit driverResonant circuit driverLCap Sensor 2CCopyright © 2016, Texas Instruments Incorporatedwww.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Depending on the shape of the container, the FDC can be located on the sensor PCB to minimize the length of 
+the traces between the input channels and the sensors. In case the shape of the container or other mechanical 
+constraints  do  not  allow  having  the  sensors  and  the  FDC  on  the  same  PCB,  the  traces  which  connect  the 
+channels to the sensor need to be shielded with the appropriate shield.
+
+8.2.3.1 Recommended Initial Register Configuration Values
+
+The application requires 100SPS ( TSAMPLE = 10ms). A sensor with an 18µH inductor and a 33pF capacitor is 
+used. Additional pin, trace, and wire capacitance accounts for 20pF, so the total capacitance is 53pF.
+
+Using  L  and  C,  fSENSOR  =  1/2π√(LC)  =  1/2π√(18*10-6  *  50*10-12)  =  5.15MHz.  This  represents  the  maximum 
+sensor frequency. When the sensor capacitance is added, the frequency decreases.
+
+Using a system controller clock of 40MHz applied to the CLKIN pin allows flexibility for setting the internal clock 
+frequencies.  The  sensor  coils  are  connected  to  channel  0  (IN0A  and  IN0B  pins),  channel  1  (IN1A  and  IN1B 
+pins), and channel 2 (IN2A and IN2B pins).
+
+After  powering  on  the  FDC,  the  FDC  enters  Sleep  Mode.  Program  the  registers  as  follows  (example  sets 
+registers for channel 0 only; channel 1 and channel 2 registers can use equivalent configuration):
+
+1. Set the dividers for channel 0.
+
+a. The sensor is in an single-ended configuration, therefore set the sensor frequency select register to 2, 
+
+which means setting field CH0_FIN_SELto b10.
+
+b. The design constraint for fREF0 is > 4 × fSENSOR. To satisfy this constraint, fREF0 must be greater than 
+20.6MHz, so set the reference divider to 1. This is done by setting the CH0_FREF_DIVIDER field to 
+0x01.
+
+c. The combined value for Chan. 0 divider register (0x14) is 0x2001.
+
+2. Sensor drive current: to ensure that the oscillation amplitude is between 1.2V and 1.8V, measure the 
+
+oscillation amplitude on an oscilloscope and adjust the IDRIVE value, or use the integrated FDC GUI feature 
+to determine the optimal setting. In this case, set the IDRIVE value to 15 (decimal), which results in an 
+oscillation amplitude of 1.68V(pk). Set the INIT_DRIVE current field to 0x00. The combined value for the 
+DRIVE_CURRENT_CH0 register (addr 0x1E) is 0x7C00.
+
+3. Program the settling time for Channel 0 (see Multi-Channel and Single-Channel Operation).
+
+a. CHx_SETTLECOUNT > Vpk × fREFx × C × π2 / (32 × IDRIVEX) → 7.5, rounded up to 8. To provide 
+
+margin to account for system tolerances, a higher value of 10 is chosen.
+
+b. Program Register 0x10 to a minimum of 10.
+c. The settle time is: (10 x 16)/40,000,000 = 4 µs
+d. The value for Chan. 0 SETTLECOUNT register (0x10) is 0x000A.
+
+4. The channel switching delay is ~1μs for fREF = 40MHz (see Multi-Channel and Single-Channel Operation)
+5. Set the conversion time by the programming the reference count for Channel 0. The budget for the 
+
+conversion time is : 1/N * (TSAMPLE – settling time – channel switching delay) = 1/3 (10,000 – 4 – 1) = 
+3.33ms
+a. To determine the conversion time register value, use the following equation and solve for 
+
+CH0_RCOUNT: Conversion Time (tC0)= (CH0_RCOUNTˣ16)/fREF0.
+
+b. This results in CH0_RCOUNT having a value of 8329 decimal (rounded down). Note that this yields an 
+
+ENOB > 13 bits.
+
+c. Set the CH0_RCOUNT register (0x08) to 0x2089.
+
+6. Use the default values for the ERROR_CONFIG register (address 0x19). By default, no interrupts are 
+
+enabled
+
+7. Program the MUX_CONFIG register
+
+a. Set the AUTOSCAN_EN to b1 bit to enable sequential mode
+b. Set RR_SEQUENCE to b10 to enable data conversion on three channels (channel 0, channel 1, channel 
+
+2)
+
+c. Set DEGLITCH to b101 to set the input deglitch filter bandwidth to 10MHz, the lowest setting that 
+
+exceeds the oscillation tank frequency.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+43
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+d. The combined value for the MUX_CONFIG register (address 0x1B) is 0xC20D
+
+8. Finally, program the CONFIG register as follows:
+
+a. Set the ACTIVE_CHAN field to b00 to select channel 0.
+b. Set SLEEP_MODE_EN field to b0 to enable conversion.
+c. Set SENSOR_ACTIVATE_SEL = b0, for full current drive during sensor activation
+d. Set the REF_CLK_SRC field to b1 to use the external clock source.
+e. Set the other fields to their default values.
+f. The combined value for the CONFIG register (address 0x1A) is 0x1601.
+
+We  then  read  the  conversion  results  for  channel  0  to  channel  2  every  10ms  from  register  addresses  0x00  to 
+0x05.
+
+Based on the example configuration above, the following register write sequence is recommended:
+
+Table 8-1. Recommended Initial Register Configuration Values (Multi-Channel Operation)
+
+ADDRESS
+
+0x08
+
+0x09
+
+0x0A
+
+0x10
+
+0x11
+
+0x12
+
+0x14
+
+0x15
+
+0x16
+
+0x19
+
+0x1B
+
+0x1E
+
+0x1F
+
+0x20
+
+0x1A
+
+VALUE
+
+0x8329
+
+REGISTER NAME
+
+RCOUNT_CH0
+
+0x8329
+
+RCOUNT_CH1
+
+0x8329
+
+RCOUNT_CH2
+
+COMMENTS
+
+Reference count calculated from timing requirements (100 SPS) and 
+resolution requirements
+
+Reference count calculated from timing requirements (100 SPS) and 
+resolution requirements
+
+Reference count calculated from timing requirements (100 SPS) and 
+resolution requirements
+
+0x000A
+
+0x000A
+
+0x000A
+
+0x2002
+
+0x2002
+
+0x2002
+
+0x0000
+
+SETTLECOUNT_CH0
+
+Minimum settling time for chosen sensor
+
+SETTLECOUNT_CH1
+
+Minimum settling time for chosen sensor
+
+SETTLECOUNT_CH2
+
+Minimum settling time for chosen sensor
+
+CLOCK_DIVIDER_CH0 CH0_FIN_DIVIDER = 1, CH0_FREF_DIVIDER = 2
+
+CLOCK_DIVIDER_CH1 CH1_FIN_DIVIDER = 1, CH1_FREF_DIVIDER = 2
+
+CLOCK_DIVIDER_CH2 CH1_FIN_DIVIDER = 1, CH1_FREF_DIVIDER = 2
+
+ERROR_CONFIG
+
+Can be changed from default to report status and error conditions
+
+0xC20D
+
+MUX_CONFIG
+
+Enable Ch 0 , Ch 1, and Ch 2 (sequential mode), set Input deglitch bandwidth 
+to 10MHz
+
+0x7C00
+
+0x7C00
+
+0x7C00
+
+0x1601
+
+DRIVE_CURRENT_CH0 Sets sensor drive current on ch 0
+
+DRIVE_CURRENT_CH1 Sets sensor drive current on ch 1
+
+DRIVE_CURRENT_CH2 Sets sensor drive current on ch 2
+
+CONFIG
+
+enable full current drive during sensor activation, select external clock source, 
+wake up device to start conversion. This register write must occur last 
+because device configuration is not permitted while the FDC is in active 
+mode.
+
+8.2.4 Application Curve
+
+A  liquid  level  sensor  with  3  electrodes  like  the  one  shown  in  the  schematic  was  connected  to  the  EVM.  The 
+plot shows the capacitance measured by Level sensor at different levels of liquid in the tank. The capacitance 
+of  the  Reference  Liquid  and  Reference  Environmental  sensors  have  a  steady  value  because  they  experience 
+consistent exposure to liquid and air, while the capacitance of the level sensor (Level) increases linearly with the 
+height of the liquid in the tank.
+
+44
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Figure 8-9. Electrode Capacitance vs Liquid Level
+
+8.3 Best Design Practices
+
+• Do leave a small gap between sensor plates in differential configurations. TI recommends a 2mm to 3mm 
+
+minimum separation.
+
+• The FDC does not support hot-swapping of the sensors. Do not hot-swap sensors, for example by using 
+
+external multiplexers.
+
+8.4 Power Supply Recommendations
+
+The  FDC  requires  a  voltage  supply  within  2.7V  and  3.6V.  Multilayer  ceramic  bypass  X7R  capacitors  of  0.1μF 
+and 1 μF between the VDD and GND pins are recommended. If the supply is located more than a few inches 
+from  the  FDC,  additional  bulk  capacitance  can  be  required  in  addition  to  the  ceramic  bypass  capacitors.  An 
+electrolytic capacitor with a value of 10μF is a typical choice.
+
+The optimum placement is closest to the VDD and GND pins of the device. Take care to minimize the loop area 
+formed by the bypass capacitor connection, the VDD pin, and the GND pin of the device. See Figure 8-10 and 
+Figure 8-10 for a layout example.
+
+8.5 Layout
+8.5.1 Layout Guidelines
+
+• Avoid long traces to connect the sensor to the FDC. Short traces reduce parasitic capacitances between 
+
+sensor inductor and offer higher system performance.
+
+• Systems that require matched channel response need to have matched trace length on all active channels.
+
+8.5.2 Layout Example
+
+Figure 8-10 to Figure 8-13 show the FDC2114 / FDC2214 evaluation module (EVM) layout.
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+45
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+Level (mm)Level (pF)101520253035404.14.154.24.254.34.354.44.454.54.554.64.654.7D031FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Figure 8-10. Example PCB Layout: Top Layer (Signal)
+
+46
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Figure 8-11. Example PCB Layout: Mid-Layer 1 (GND)
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+47
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+Figure 8-12. Example PCB Layout: Mid-Layer 2 (Power)
+
+48
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+Figure 8-13. Example PCB Layout: Bottom Layer (Signal)
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Submit Document Feedback
+
+49
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+FDC2212, FDC2214, FDC2112, FDC2114
+SNOSCZ5B – JUNE 2015 – REVISED OCTOBER 2024
+
+www.ti.com
+
+9 Device and Documentation Support
+9.1 Receiving Notification of Documentation Updates
+
+To  receive  notification  of  documentation  updates,  navigate  to  the  device  product  folder  on  ti.com.  Click  on 
+Notifications  to  register  and  receive  a  weekly  digest  of  any  product  information  that  has  changed.  For  change 
+details, review the revision history included in any revised document.
+
+9.2 Support Resources
+
+TI  E2E™  support  forums  are  an  engineer's  go-to  source  for  fast,  verified  answers  and  design  help  —  straight 
+from the experts. Search existing answers or ask your own question to get the quick design help you need.
+
+Linked content is provided "AS IS" by the respective contributors. They do not constitute TI specifications and do 
+not necessarily reflect TI's views; see TI's Terms of Use.
+
+9.3 Trademarks
+TI E2E™ is a trademark of Texas Instruments.
+All trademarks are the property of their respective owners.
+9.4 Electrostatic Discharge Caution
+
+This integrated circuit can be damaged by ESD. Texas Instruments recommends that all integrated circuits be handled 
+with appropriate precautions. Failure to observe proper handling and installation procedures can cause damage.
+
+ESD damage can range from subtle performance degradation to complete device failure. Precision integrated circuits may 
+be more susceptible to damage because very small parametric changes could cause the device not to meet its published 
+specifications.
+
+9.5 Glossary
+
+TI Glossary 
+
+This glossary lists and explains terms, acronyms, and definitions.
+
+10 Revision History
+
+Changes from Revision A (June 2015) to Revision B (October 2024)
+• Changed data sheet title from: FDC2x1x EMI-Resistant 28-Bit,12-Bit Capacitance-to-Digital Converter for 
+
+Page
+
+Proximity and Level Sensing Applications to: FDC2x1x Multi-Channel, High Resolution Capacitance-to-Digital 
+Converter for Capacitive Sensing Applications ................................................................................................. 1
+• Updated the numbering format for tables, figures, and cross-references throughout the document................. 1
+• Changed all instances of legacy terminology to controller and target where I2C is mentioned..........................1
+• Changed Device Information table to Package Information .............................................................................. 1
+
+Changes from Revision * (June 2015) to Revision A (June 2015)
+Page
+• Added full datasheet. .........................................................................................................................................1
+
+11 Mechanical, Packaging, and Orderable Information
+
+The  following  pages  include  mechanical,  packaging,  and  orderable  information.  This  information  is  the  most 
+current data available for the designated devices. This data is subject to change without notice and revision of 
+this document. For browser-based versions of this data sheet, refer to the left-hand navigation.
+
+50
+
+Submit Document Feedback
+
+Copyright © 2024 Texas Instruments Incorporated
+
+Product Folder Links: FDC2212 FDC2214 FDC2112 FDC2114
+
+www.ti.com
+
+7-Oct-2025
+
+PACKAGE OPTION ADDENDUM
+
+PACKAGING INFORMATION
+
+Orderable part number
+
+Status
+
+Material type
+
+Package | Pins
+
+Package qty | Carrier
+
+RoHS
+
+(1)
+
+(2)
+
+FDC2112DNTR
+
+FDC2112DNTR.A
+
+Active
+
+Active
+
+Production
+
+WSON (DNT) | 12
+
+4500 | LARGE T&R
+
+Production
+
+WSON (DNT) | 12
+
+4500 | LARGE T&R
+
+FDC2112DNTT
+
+Obsolete
+
+Production
+
+WSON (DNT) | 12
+
+-
+
+FDC2114RGHR
+
+FDC2114RGHR.A
+
+FDC2212DNTR
+
+FDC2212DNTR.A
+
+Active
+
+Active
+
+Active
+
+Active
+
+Production
+
+WQFN (RGH) | 16
+
+4500 | LARGE T&R
+
+Production
+
+WQFN (RGH) | 16
+
+4500 | LARGE T&R
+
+Production
+
+WSON (DNT) | 12
+
+4500 | LARGE T&R
+
+Production
+
+WSON (DNT) | 12
+
+4500 | LARGE T&R
+
+FDC2212DNTT
+
+Obsolete
+
+Production
+
+WSON (DNT) | 12
+
+-
+
+FDC2214RGHR
+
+FDC2214RGHR.A
+
+Active
+
+Active
+
+Production
+
+WQFN (RGH) | 16
+
+4500 | LARGE T&R
+
+Production
+
+WQFN (RGH) | 16
+
+4500 | LARGE T&R
+
+FDC2214RGHT
+
+Obsolete
+
+Production
+
+WQFN (RGH) | 16
+
+-
+
+(3)
+
+Yes
+
+Yes
+
+-
+
+Yes
+
+Yes
+
+Yes
+
+Yes
+
+-
+
+Yes
+
+Yes
+
+-
+
+Lead finish/
+Ball material
+
+(4)
+
+SN
+
+SN
+
+MSL rating/
+Peak reflow
+
+(5)
+
+Level-1-260C-UNLIM
+
+Level-1-260C-UNLIM
+
+Call TI
+
+Call TI
+
+SN
+
+SN
+
+SN
+
+SN
+
+Call TI
+
+SN
+
+SN
+
+Call TI
+
+Level-1-260C-UNLIM
+
+Level-1-260C-UNLIM
+
+Level-1-260C-UNLIM
+
+Level-1-260C-UNLIM
+
+Call TI
+
+Level-1-260C-UNLIM
+
+Level-1-260C-UNLIM
+
+Call TI
+
+Op temp (°C)
+
+Part marking
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+-40 to 125
+
+(6)
+
+FDC2112
+
+FDC2112
+
+FDC2112
+
+FDC2114
+
+FDC2114
+
+FDC2212
+
+FDC2212
+
+FDC2212
+
+FDC2214
+
+FDC2214
+
+FDC2214
+
+(1) Status:  For more details on status, see our product life cycle.
+
+(2) Material type:  When designated, preproduction parts are prototypes/experimental devices, and are not yet approved or released for full production. Testing and final process, including without limitation quality assurance,
+reliability performance testing, and/or process qualification, may not yet be complete, and this item is subject to further changes or possible discontinuation. If available for ordering, purchases will be subject to an additional
+waiver at checkout, and are intended for early internal evaluation purposes only. These items are sold without warranties of any kind.
+
+(3) RoHS values:  Yes, No, RoHS Exempt. See the TI RoHS Statement for additional information and value definition.
+
+(4) Lead finish/Ball material:  Parts may have multiple material finish options. Finish options are separated by a vertical ruled line. Lead finish/Ball material values may wrap to two lines if the finish value exceeds the maximum
+column width.
+
+(5) MSL rating/Peak reflow:  The moisture sensitivity level ratings and peak solder (reflow) temperatures. In the event that a part has multiple moisture sensitivity ratings, only the lowest level per JEDEC standards is shown.
+Refer to the shipping label for the actual reflow temperature that will be used to mount the part to the printed circuit board.
+
+(6) Part marking:  There may be an additional marking, which relates to the logo, the lot trace code information, or the environmental category of the part.
+
+Multiple part markings will be inside parentheses. Only one part marking contained in parentheses and separated by a "~" will appear on a part. If a line is indented then it is a continuation of the previous line and the two
+combined represent the entire part marking for that device.
+
+Addendum-Page 1
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+www.ti.com
+
+7-Oct-2025
+
+PACKAGE OPTION ADDENDUM
+
+Important Information and Disclaimer:The information provided on this page represents TI's knowledge and belief as of the date that it is provided. TI bases its knowledge and belief on information provided by third parties, and
+makes no representation or warranty as to the accuracy of such information. Efforts are underway to better integrate information from third parties. TI has taken and continues to take reasonable steps to provide representative
+and accurate information but may not have conducted destructive testing or chemical analysis on incoming materials and chemicals. TI and TI suppliers consider certain information to be proprietary, and thus CAS numbers
+and other limited information may not be available for release.
+
+In no event shall TI's liability arising out of such information exceed the total purchase price of the TI part(s) at issue in this document sold by TI to Customer on an annual basis.
+
+ OTHER QUALIFIED VERSIONS OF FDC2112, FDC2114, FDC2212, FDC2214 :
+• Automotive : FDC2112-Q1, FDC2114-Q1, FDC2212-Q1, FDC2214-Q1
+
+ NOTE: Qualified Version Definitions:
+
+• Automotive - Q100 devices qualified for high-reliability automotive applications targeting zero defects
+
+Addendum-Page 2
+
+ 
+ 
+www.ti.com
+
+7-Jun-2025
+
+PACKAGE MATERIALS INFORMATION
+
+TAPE AND REEL INFORMATION
+
+REEL DIMENSIONS
+
+TAPE DIMENSIONS
+
+K0
+
+ P1
+
+B0 W
+
+Reel
+Diameter
+
+Cavity
+
+A0
+
+A0
+B0
+K0
+W
+P1
+
+Dimension designed to accommodate the component width
+Dimension designed to accommodate the component length
+Dimension designed to accommodate the component thickness
+Overall width of the carrier tape
+Pitch between successive cavity centers
+
+Reel Width (W1)
+
+QUADRANT ASSIGNMENTS FOR PIN 1 ORIENTATION IN TAPE
+
+Sprocket Holes
+
+Q1
+
+Q2
+
+Q1
+
+Q2
+
+Q3
+
+Q4
+
+Q3
+
+Q4
+
+User Direction of Feed
+
+Pocket Quadrants
+
+*All dimensions are nominal
+
+Device
+
+Package
+Type
+
+Package
+Drawing
+
+Pins
+
+SPQ
+
+Reel
+Diameter
+(mm)
+
+Reel
+Width
+W1 (mm)
+
+A0
+(mm)
+
+B0
+(mm)
+
+K0
+(mm)
+
+P1
+(mm)
+
+W
+(mm)
+
+Pin1
+Quadrant
+
+FDC2112DNTR
+
+FDC2114RGHR
+
+FDC2212DNTR
+
+FDC2214RGHR
+
+WSON
+
+WQFN
+
+WSON
+
+WQFN
+
+DNT
+
+RGH
+
+DNT
+
+RGH
+
+12
+
+16
+
+12
+
+16
+
+4500
+
+4500
+
+4500
+
+4500
+
+330.0
+
+330.0
+
+330.0
+
+330.0
+
+12.4
+
+12.4
+
+12.4
+
+12.4
+
+4.3
+
+4.3
+
+4.3
+
+4.3
+
+4.3
+
+4.3
+
+4.3
+
+4.3
+
+1.3
+
+1.3
+
+1.3
+
+1.3
+
+8.0
+
+8.0
+
+8.0
+
+8.0
+
+12.0
+
+12.0
+
+12.0
+
+12.0
+
+Q1
+
+Q1
+
+Q1
+
+Q1
+
+Pack Materials-Page 1
+
+ 
+ 
+ 
+PACKAGE MATERIALS INFORMATION
+
+www.ti.com
+
+7-Jun-2025
+
+TAPE AND REEL BOX DIMENSIONS
+
+Width (mm)
+
+H
+
+W
+
+L
+
+*All dimensions are nominal
+
+Device
+
+Package Type
+
+Package Drawing Pins
+
+FDC2112DNTR
+
+FDC2114RGHR
+
+FDC2212DNTR
+
+FDC2214RGHR
+
+WSON
+
+WQFN
+
+WSON
+
+WQFN
+
+DNT
+
+RGH
+
+DNT
+
+RGH
+
+12
+
+16
+
+12
+
+16
+
+SPQ
+
+4500
+
+4500
+
+4500
+
+4500
+
+Length (mm) Width (mm) Height (mm)
+
+367.0
+
+367.0
+
+367.0
+
+367.0
+
+367.0
+
+367.0
+
+367.0
+
+367.0
+
+35.0
+
+35.0
+
+35.0
+
+35.0
+
+Pack Materials-Page 2
+
+ 
+ 
+ 
+RGH0016A
+
+SCALE  3.000
+
+PACKAGE OUTLINE
+
+WQFN - 0.8 mm max height
+
+PLASTIC QUAD FLATPACK - NO LEAD
+
+B
+
+4.1
+3.9
+
+PIN 1 INDEX AREA
+
+A
+
+4.1
+3.9
+
+0.5
+0.3
+
+0.3
+0.2
+
+DETAIL
+OPTIONAL TERMINAL
+TYPICAL
+
+ DIM A
+
+ OPT 1
+(0.1)
+
+ OPT 1
+(0.2)
+
+C
+
+SEATING PLANE
+
+0.08
+
+(A) TYP
+
+0.8 MAX
+
+0.05
+0.00
+
+SEE TERMINAL
+DETAIL
+
+12X  0.5
+
+4X
+1.5
+
+4
+
+1
+
+2.6 0.1
+
+5
+
+8
+
+17
+
+PIN 1 ID
+(OPTIONAL)
+
+16
+
+SYMM
+
+13
+
+16X 
+
+0.5
+0.3
+
+9
+
+12
+
+EXPOSED
+THERMAL PAD
+
+SYMM
+
+16X 
+
+0.3
+0.2
+0.1
+0.05
+
+C A B
+
+NOTES:
+
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+    per ASME Y14.5M. 
+2. This drawing is subject to change without notice. 
+3. The package thermal pad must be soldered to the printed circuit board for optimal thermal and mechanical performance.
+
+4214978/B   01/2017
+
+www.ti.com
+
+ 
+RGH0016A
+
+EXAMPLE BOARD LAYOUT
+
+WQFN - 0.8 mm max height
+
+PLASTIC QUAD FLATPACK - NO LEAD
+
+16X (0.6)
+
+1
+
+4
+
+16X (0.25)
+
+12X (0.5)
+
+( 0.2) TYP
+VIA
+
+( 2.6)
+
+SYMM
+
+16
+
+13
+
+17
+
+(R0.05)
+TYP
+
+12
+
+SYMM
+
+(3.8)
+
+(1)
+
+9
+
+5
+
+(1)
+
+8
+
+(3.8)
+
+LAND PATTERN EXAMPLE
+EXPOSED METAL SHOWN
+SCALE:15X
+
+0.07 MAX
+ALL AROUND
+
+0.07 MIN
+ALL AROUND
+
+EXPOSED METAL
+
+METAL
+
+EXPOSED METAL
+
+SOLDER MASK
+OPENING
+
+NON SOLDER MASK
+DEFINED
+(PREFERRED)
+
+SOLDER MASK
+DEFINED
+
+SOLDER MASK DETAILS
+
+SOLDER MASK
+OPENING
+
+METAL UNDER
+SOLDER MASK
+
+NOTES: (continued)
+
+4. This package is designed to be soldered to a thermal pad on the board. For more information, see Texas Instruments literature
+    number SLUA271 (www.ti.com/lit/slua271).
+5. Vias are optional depending on application, refer to device data sheet. If any vias are implemented, refer to their locations shown
+    on this view. It is recommended that vias under paste be filled, plugged or tented.
+
+4214978/B   01/2017
+
+www.ti.com
+
+ 
+RGH0016A
+
+EXAMPLE STENCIL DESIGN
+
+WQFN - 0.8 mm max height
+
+PLASTIC QUAD FLATPACK - NO LEAD
+
+4X ( 1.15)
+
+16
+
+13
+
+(0.675) TYP
+
+16X (0.6)
+
+17
+
+16X (0.25)
+
+12X (0.5)
+
+1
+
+4
+
+EXPOSED METAL
+TYP
+
+12
+
+(0.675)
+TYP
+
+SYMM
+
+(3.8)
+
+9
+
+(R0.05)
+TYP
+
+5
+
+8
+
+SYMM
+
+(3.8)
+
+SOLDER PASTE EXAMPLE
+BASED ON 0.125 mm THICK STENCIL
+
+EXPOSED PAD 17
+78% PRINTED SOLDER COVERAGE BY AREA UNDER PACKAGE
+SCALE:20X
+
+NOTES: (continued)
+
+6. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+   design recommendations.
+
+4214978/B   01/2017
+
+www.ti.com
+
+ 
+ 
+DNT0012B
+
+SCALE  3.000
+
+PACKAGE OUTLINE
+
+WSON - 0.8 mm max height
+
+PLASTIC SMALL OUTLINE - NO LEAD
+
+B
+
+4.1
+3.9
+
+A
+
+4.1
+3.9
+
+PIN 1 INDEX AREA
+
+0.8
+0.7
+
+0.05
+0.00
+
+C
+
+SEATING PLANE
+
+0.08 C
+
+EXPOSED
+THERMAL PAD
+
+2.6 0.1
+
+(0.1) TYP
+
+2X
+2.5
+
+10X 0.5
+
+6
+
+1
+
+PIN 1 ID
+X 0.25)
+
+(45
+
+12X 
+
+0.5
+0.3
+
+7
+
+12
+
+3 0.1
+
+12X 
+
+0.3
+0.2
+
+0.1
+0.05
+
+C A B
+
+C
+
+NOTES:
+
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+    per ASME Y14.5M. 
+2. This drawing is subject to change without notice. 
+3. The package thermal pad must be soldered to the printed circuit board for thermal and mechanical performance.
+
+4214928/C   10/2021
+
+www.ti.com
+
+ 
+DNT0012B
+
+EXAMPLE BOARD LAYOUT
+
+WSON - 0.8 mm max height
+
+PLASTIC SMALL OUTLINE - NO LEAD
+
+12X (0.6)
+
+1
+
+12X (0.25)
+
+SYMM
+
+10X (0.5)
+
+(R0.05) TYP
+
+6
+
+(2.6)
+
+SYMM
+
+(1.25)
+
+(3)
+
+12
+
+7
+
+( 0.2) VIA
+TYP
+
+(1.05)
+
+(3.8)
+
+LAND PATTERN EXAMPLE
+EXPOSED METAL SHOWN
+SCALE:15X
+
+0.07 MAX
+ALL AROUND
+
+0.07 MIN
+ALL AROUND
+
+EXPOSED METAL
+
+EXPOSED METAL
+
+SOLDER MASK
+OPENING
+
+METAL
+
+METAL UNDER
+SOLDER MASK
+
+SOLDER MASK
+OPENING
+
+NON SOLDER MASK
+DEFINED
+(PREFERRED)
+
+SOLDER MASK
+DEFINED
+
+SOLDER MASK DETAILS
+
+NOTES: (continued)
+
+4. This package is designed to be soldered to a thermal pad on the board. For more information, see Texas Instruments literature
+    number SLUA271 (www.ti.com/lit/slua271).
+
+4214928/C   10/2021
+
+www.ti.com
+
+ 
+ 
+ 
+DNT0012B
+
+EXAMPLE STENCIL DESIGN
+
+WSON - 0.8 mm max height
+
+PLASTIC SMALL OUTLINE - NO LEAD
+
+SYMM
+
+METAL
+TYP
+
+(0.68)
+
+12X (0.6)
+
+1
+
+12X (0.25)
+
+10X (0.5)
+
+(R0.05) TYP
+
+6
+
+12
+
+(0.76)
+
+SYMM
+
+4X
+(1.31)
+
+7
+
+4X (1.15)
+
+(3.8)
+
+SOLDER PASTE EXAMPLE
+BASED ON 0.125 mm THICK STENCIL
+
+EXPOSED PAD
+ 77% PRINTED SOLDER COVERAGE BY AREA
+SCALE:20X
+
+NOTES: (continued)
+
+5. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+    design recommendations. 
+
+4214928/C   10/2021
+
+www.ti.com
+
+ 
+ 
+ 
+IMPORTANT NOTICE AND DISCLAIMER
+TI PROVIDES TECHNICAL AND RELIABILITY DATA (INCLUDING DATA SHEETS), DESIGN RESOURCES (INCLUDING REFERENCE 
+DESIGNS), APPLICATION OR OTHER DESIGN ADVICE, WEB TOOLS, SAFETY INFORMATION, AND OTHER RESOURCES “AS IS” 
+AND WITH ALL FAULTS, AND DISCLAIMS ALL WARRANTIES, EXPRESS AND IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
+IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD 
+PARTY INTELLECTUAL PROPERTY RIGHTS.
+
+These resources are intended for skilled developers designing with TI products. You are solely responsible for (1) selecting the appropriate 
+TI products for your application, (2) designing, validating and testing your application, and (3) ensuring your application meets applicable 
+standards, and any other safety, security, regulatory or other requirements.
+
+These resources are subject to change without notice. TI grants you permission to use these resources only for development of an 
+application that uses the TI products described in the resource. Other reproduction and display of these resources is prohibited. No license 
+is granted to any other TI intellectual property right or to any third party intellectual property right. TI disclaims responsibility for, and you 
+will fully indemnify TI and its representatives against, any claims, damages, costs, losses, and liabilities arising out of your use of these 
+resources.
+
+TI’s products are provided subject to TI’s Terms of Sale or other applicable terms available either on ti.com or provided in conjunction with 
+such TI products. TI’s provision of these resources does not expand or otherwise alter TI’s applicable warranties or warranty disclaimers for 
+TI products.
+
+TI objects to and rejects any additional or different terms you may have proposed. IMPORTANT NOTICE
+
+Mailing Address: Texas Instruments, Post Office Box 655303, Dallas, Texas 75265
+Copyright © 2025, Texas Instruments Incorporated
+
+
