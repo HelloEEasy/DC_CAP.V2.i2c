@@ -231,7 +231,7 @@ double fdc_raw_to_freq(uint32_t raw24, double fref_hz)
  */
 double fdc_freq_to_capacitance(double fsensor_hz, double L_h, double C0_f)
 {
-    if (fsensor_hz <= 0.0 || L_h <= 0.0) return -1.0; /* error sentinel */
+     if (fsensor_hz <= 0.0 || L_h <= 0.0) return -1.0; /* error sentinel */
     double omega = 2.0 * 3.14159265358979323846 * fsensor_hz;
     double C_total = 1.0 / (L_h * omega * omega);
     double C = C_total - C0_f;

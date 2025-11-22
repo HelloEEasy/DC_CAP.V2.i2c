@@ -36,13 +36,19 @@ void fdc_debug_init(void)
     }  
 }
 
+/**
+ * @brief 格式化打印调试信息到串口
+ * @param fmt 格式化字符串，类似printf
+ * @param ... 可变参数列表
+ * @note 使用阻塞传输模式确保调试输出的可靠性
+ */
 void fdc_debug_print(const char *fmt, ...)
 {
-    char buf[256];
-    va_list args;
-    va_start(args, fmt);
-    int len = vsnprintf(buf, sizeof(buf), fmt, args);
-    va_end(args);
+    char buf[256];//将 fmt 格式串和可变参数组合后的完整字符串，先存到 buf 中
+    va_list args;//用于后续 “遍历” 函数的可变参数
+    va_start(args, fmt);//通过最后一个固定参数（这里是 fmt）的地址，定位到后续可变参数在内存中的位置，让 args 能正确访问到可变参数
+    int len = vsnprintf(buf, sizeof(buf), fmt, args);//将 fmt 格式串和 args 对应的可变参数，组合成完整的字符串，存入 buf 缓冲区；
+    va_end(args);//在 va_start 之后，必须配对调用 va_end,作用是 释放 va_list 相关的资源，结束可变参数的访问；
     if (len < 0) return;
     if (len > (int)sizeof(buf)) len = sizeof(buf);
     /* 使用阻塞传输保持实现简单且可靠用于调试 */

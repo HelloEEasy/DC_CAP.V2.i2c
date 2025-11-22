@@ -75,7 +75,7 @@ void SystemClock_Config(void);
   * @retval int
   */
 int main(void)
-{
+{ 
 
   /* USER CODE BEGIN 1 */
 
@@ -187,17 +187,19 @@ int main(void)
       const double C0_f = 20e-12;  /* 20 pF */
       const double L_h = 18e-6;     /* 18 uH, 请根据实际线圈电感替换 */
 
-      double fsensor = fdc_raw_to_freq(raw, fref_hz);
+      double fsensor = fdc_raw_to_freq(raw, fref_hz); 
       double C_f = fdc_freq_to_capacitance(fsensor, L_h, C0_f);
       /* 将电容转换为 pF 便于阅读 */
       double C_pf = (C_f > 0.0) ? (C_f * 1e12) : -1.0;//三元条件运算符:条件表达式 ? 表达式1 : 表达式2;先判断「条件表达式」的真假，然后根据判断结果分别执行表达式1或表达式2。如果条件为真（非0），则返回表达式1的结果；否则，返回表达式2的结果。
 
 
       /* 打印通道、原始值、频率与电容（pF）。限频打印已在初始化时用于错误，主循环打印频率较低（每轮 50ms）。 */
-      if (C_pf >= 0.0) {
-          fdc_debug_print("CH%d raw=%lu f=%.1fHz C=%.3f pF\r\n", ch, (unsigned long)raw, fsensor, C_pf);
+      if (C_pf >= 0.0) {//printf 的浮点支持被禁用了（在 STM32 的 newlib/nano printf 默认不含 %f）
+          uint32_t f_hz = (uint32_t)(fsensor + 0.5);           /* 四舍五入 整数 Hz */
+          uint32_t C_milli_pf = (uint32_t)(C_pf + 0.5); /* 四舍五入 */
+          fdc_debug_print("CH%d raw=%lu f=%luHz C=%lu m-pF\r\n",ch, (unsigned long)raw, (unsigned long)f_hz, (unsigned long)C_milli_pf);
       } else {
-          fdc_debug_print("CH%d raw=%lu f=%.1fHz C=ERR\r\n", ch, (unsigned long)raw, fsensor);
+          fdc_debug_print("CH%d raw=%lu   f=%.1f Hz   C=ERR\r\n", ch, (unsigned long)raw, fsensor);
       }
     } else {
       /* 读取失败：打印错误信息（此处可改用限频打印以避免循环刷屏） */
@@ -212,27 +214,27 @@ int main(void)
   } 
 
 
-  /* 先处理串口命令（如果有），把命令放在主循环处理，避免在ISR中调用HAL函数 */
-  {
-    char cmd[32];
-    if (fdc_debug_get_command(cmd, sizeof(cmd))) {
-      /* 由主循环调用命令处理，安全执行TIM相关的HAL操作 */
-      HandleTIM3Command(cmd);
-    }
-  }
+  // /* 先处理串口命令（如果有），把命令放在主循环处理，避免在ISR中调用HAL函数 */
+  // {
+  //   char cmd[32];
+  //   if (fdc_debug_get_command(cmd, sizeof(cmd))) {
+  //     /* 由主循环调用命令处理，安全执行TIM相关的HAL操作 */
+  //     HandleTIM3Command(cmd);
+  //   }
+  // }
 
 
 
-  /* 诊断：如果用户在串口发送了字符但没有看到回显，
-   * 可以通过 RX 事件计数确认中断是否触发。
-   * 这里每轮读取并清零计数，若 >0 则打印一次（不会太频繁）。
-   */
-  {
-    int rxev = fdc_debug_get_rx_events();
-    if (rxev>0) {
-      fdc_debug_print("RX events=%d\r\n", rxev);
-    }
-  }
+  // /* 诊断：如果用户在串口发送了字符但没有看到回显，
+  //  * 可以通过 RX 事件计数确认中断是否触发。
+  //  * 这里每轮读取并清零计数，若 >0 则打印一次（不会太频繁）。
+  //  */
+  // {
+  //   int rxev = fdc_debug_get_rx_events();
+  //   if (rxev>0) {
+  //     fdc_debug_print("RX events=%d\r\n", rxev);
+  //   }
+  // }
 
   // /* 在一轮四通道读取完成后再等待较长的周期，控制总体采样率 */
   HAL_Delay(50);
