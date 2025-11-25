@@ -168,12 +168,14 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* timHandle)
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**TIM2 GPIO Configuration
-    PA0-WKUP     ------> TIM2_CH1
+    PA15     ------> TIM2_CH1
     */
     GPIO_InitStruct.Pin = Vout_LAR_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
     HAL_GPIO_Init(Vout_LAR_GPIO_Port, &GPIO_InitStruct);
+
+    __HAL_AFIO_REMAP_TIM2_PARTIAL_1();
 
   /* USER CODE BEGIN TIM2_MspPostInit 1 */
 

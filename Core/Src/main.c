@@ -18,11 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "i2c.h"
+#include "stm32f1xx_hal_adc.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include <stdint.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -75,7 +77,7 @@ void SystemClock_Config(void);
   * @retval int
   */
 int main(void)
-{ 
+{
 
   /* USER CODE BEGIN 1 */
 
@@ -84,7 +86,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-    HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -103,6 +105,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   
   /* 1. 初始化串口接收以接收命令 */
@@ -128,7 +131,7 @@ int main(void)
     }
   }
 
-
+  HAL_ADC_Start(&hadc1); //启动ADC1
 
   // /* 启动时对 4 个通道做基线校准（将结果写入上方定义的 baseline[] 数组）
   //  * 说明：如果不做校准，baseline 默认为 0（在头部已初始化为 0），
@@ -186,7 +189,6 @@ int main(void)
       const double fref_hz = 40e6; /* 40 MHz */
       const double C0_f = 20e-12;  /* 20 pF */
       const double L_h = 18e-6;     /* 18 uH, 请根据实际线圈电感替换 */
-
       double fsensor = fdc_raw_to_freq(raw, fref_hz); 
       double C_f = fdc_freq_to_capacitance(fsensor, L_h, C0_f);
       /* 将电容转换为 pF 便于阅读 */
@@ -213,6 +215,14 @@ int main(void)
     HAL_Delay(5);
   } 
 
+
+  
+  HAL_ADC_PollForConversion(&hadc1, 100);
+  uint32_t adcValue = HAL_ADC_GetValue(&hadc1);
+  float voltage = (adcValue / 4095.0f) * 3.3f; // Assuming a 3.3V reference voltage
+  float test_value = 0.666666666;
+  fdc_debug_print("test: %1.2f\r\n", test_value);
+  fdc_debug_print("ADC1 Value: %1.2f\r\n", voltage);
 
   // /* 先处理串口命令（如果有），把命令放在主循环处理，避免在ISR中调用HAL函数 */
   // {
@@ -250,6 +260,7 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -279,9 +290,15 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
-// /* USER CODE BEGIN 4 */
+/* USER CODE BEGIN 4 */
 // /* OC 中断回调：不要在回调中直接做耗时操作，改为设置请求标志，由主循环处理（以便做死区延时） */
 // void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim){
 //   if (htim->Instance == TIM2 && htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2) {
